@@ -1,4 +1,4 @@
-package com.woojjam.schedule;
+package com.woojjam.schedule.springscheduler;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -9,6 +9,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.woojjam.schedule.User;
+import com.woojjam.schedule.UserService;
 
 import lombok.RequiredArgsConstructor;
 
