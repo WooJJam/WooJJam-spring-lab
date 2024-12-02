@@ -32,6 +32,7 @@ public class LoggerQuartz {
 			.build();
 
 		Scheduler scheduler = new StdSchedulerFactory().getScheduler();
+		scheduler.getListenerManager().addJobListener(new LoggerJobListener());
 		scheduler.start();
 		scheduler.scheduleJob(job, trigger);
 	}
