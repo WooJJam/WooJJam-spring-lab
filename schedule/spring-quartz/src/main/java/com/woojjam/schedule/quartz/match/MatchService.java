@@ -16,7 +16,7 @@ public class MatchService {
 
 	private final MatchRepository matchRepository;
 
-	@PostConstruct
+	// @PostConstruct
 	@Transactional
 	public void init() {
 		LocalDateTime startAt = LocalDateTime.now();
