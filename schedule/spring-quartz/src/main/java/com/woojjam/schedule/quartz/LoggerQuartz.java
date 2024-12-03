@@ -16,11 +16,11 @@ public class LoggerQuartz {
 	public void run() throws SchedulerException {
 		JobDetail job = JobBuilder
 			.newJob(LoggerJob.class)
-			.withIdentity("loogerTrigger", "group1")
+			.withIdentity("LoggerJobDetailKey", "woojjam") // context.getJobDetail().getKey();
 			.withDescription("This is Logger Job")
 			.ofType(LoggerJob.class)
 			.requestRecovery(true)
-			.usingJobData("key", "value")
+			.usingJobData("name", "jaemin")
 			.build();
 
 		Trigger trigger = TriggerBuilder.newTrigger()
