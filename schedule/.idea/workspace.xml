@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4d39b908-089f-4651-8bea-3e7ce9ab512f" name="Changes" comment="feat: JobDataMap 사용 로직 추가">
+      <change afterPath="$PROJECT_DIR$/../.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/libraries/gradle_wrapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/libraries/spring_quartz_0_0_1_SNAPSHOT.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/modules/schedule.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/modules/spring-quartz.main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/modules/spring-scheduler.main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/spring-quartz.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/spring-quartz.main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/spring-quartz.test.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/spring-scheduler.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/spring-scheduler.main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/spring-scheduler.test.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/match/Match.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/match/MatchJob.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/match/MatchRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/match/MatchService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-quartz/src/test/java/com/woojjam/schedule/quartz/match/MatchRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-quartz/src/test/resources/application-local.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-quartz/src/test/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-quartz/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/spring-quartz/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/LoggerJob.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/LoggerJob.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/LoggerJobListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/LoggerJobListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/LoggerQuartz.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/LoggerQuartz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/QuartzApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/QuartzApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/QuartzSchedulerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/QuartzSchedulerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-quartz/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-quartz/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-quartz/src/test/java/com/woojjam/schedule/quartz/QuartzApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-scheduler/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/spring-scheduler/build.gradle" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/quartz">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/spring-quartz">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/spring-scheduler">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/springscheduler">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/spring-quartz">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/spring-scheduler">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="JUnit5 Test Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2peESXjSQ0XerPfh2RBmk8nSufV" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.Build schedule.executor": "Run",
+    "Gradle.MatchRepositoryTest.executor": "Run",
+    "Gradle.MatchRepositoryTest.매치_시작_2시간전_조회 (1).executor": "Run",
+    "Gradle.MatchRepositoryTest.매치_시작_2시간전_조회.executor": "Run",
+    "Gradle.MatchServiceTest.executor": "Run",
+    "Gradle.MatchServiceTest.매치_시작_2시간전_조회.executor": "Run",
+    "Gradle.schedule:spring-quartz [build].executor": "Run",
+    "Gradle.schedule:spring-quartz [clean].executor": "Run",
+    "Gradle.schedule:spring-scheduler [build].executor": "Run",
+    "Gradle.spring-scheduler [clean].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "Spring Boot.QuartzApplication.executor": "Run",
+    "Spring Boot.ScheduleApplication.executor": "Run",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "main",
+    "jdk.selected.JAVA_MODULE": "17",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/woojjam/Desktop/study/backend/sping/spring-labs/schedule",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.configurations.included.in.services": "true",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/spring-quartz/src/test" />
+      <recent name="$PROJECT_DIR$/spring-scheduler/src/main/resources" />
+      <recent name="$PROJECT_DIR$/spring-quartz/src/main/resources" />
+      <recent name="$PROJECT_DIR$/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler" />
+      <recent name="$PROJECT_DIR$/quartz/src/main/java/com/woojjam/schedule/quartz" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.woojjam.schedule.quartz.match" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.woojjam.schedule.springscheduler" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="MicronautRunConfigurationType" />
+        <option value="QuarkusRunConfigurationType" />
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Gradle.MatchRepositoryTest">
+    <configuration name="MatchRepositoryTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/spring-quartz" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.woojjam.schedule.quartz.match.MatchRepositoryTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="MatchRepositoryTest.매치_시작_2시간전_조회 (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/spring-quartz" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.woojjam.schedule.quartz.match.MatchRepositoryTest.매치_시작_2시간전_조회&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="schedule:spring-quartz [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/spring-quartz" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="schedule:spring-scheduler [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/spring-scheduler" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="spring-scheduler [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/spring-scheduler" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="QuartzApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="spring-quartz.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.woojjam.schedule.QuartzApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ScheduleApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="ACTIVE_PROFILES" value="local" />
+      <module name="schedule.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.woojjam.schedule.ScheduleApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringschedulerApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="schedule.spring-scheduler.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.woojjam.schedule.springscheduler.SpringschedulerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringschedulerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="spring-scheduler.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.woojjam.schedule.springscheduler.SpringschedulerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Gradle.spring-scheduler [clean]" />
+      <item itemvalue="Gradle.MatchRepositoryTest" />
+      <item itemvalue="Gradle.MatchRepositoryTest.매치_시작_2시간전_조회 (1)" />
+      <item itemvalue="Gradle.schedule:spring-quartz [build]" />
+      <item itemvalue="Gradle.schedule:spring-scheduler [build]" />
+      <item itemvalue="Spring Boot.QuartzApplication" />
+      <item itemvalue="Spring Boot.SpringschedulerApplication" />
+      <item itemvalue="Spring Boot.SpringschedulerApplication (1)" />
+      <item itemvalue="Spring Boot.ScheduleApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.MatchRepositoryTest" />
+        <item itemvalue="Gradle.schedule:spring-scheduler [build]" />
+        <item itemvalue="Gradle.spring-scheduler [clean]" />
+        <item itemvalue="Gradle.MatchRepositoryTest.매치_시작_2시간전_조회 (1)" />
+        <item itemvalue="Gradle.schedule:spring-quartz [build]" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4d39b908-089f-4651-8bea-3e7ce9ab512f" name="Changes" comment="" />
+      <created>1733118141267</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1733118141267</updated>
+      <workItem from="1733118142715" duration="19210000" />
+      <workItem from="1733204217058" duration="5829000" />
+      <workItem from="1733211544502" duration="215000" />
+      <workItem from="1733212805862" duration="717000" />
+    </task>
+    <task id="LOCAL-00001" summary="chore: MySQL 의존성 추가">
+      <option name="closed" value="true" />
+      <created>1733121551188</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1733121551188</updated>
+    </task>
+    <task id="LOCAL-00002" summary="chore: MySQL 의존성 추가">
+      <option name="closed" value="true" />
+      <created>1733121607624</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1733121607624</updated>
+    </task>
+    <task id="LOCAL-00003" summary="feat: Spring Scheduler 적용">
+      <option name="closed" value="true" />
+      <created>1733121640808</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1733121640808</updated>
+    </task>
+    <task id="LOCAL-00004" summary="chore: Spring Quartz 의존성 추가">
+      <option name="closed" value="true" />
+      <created>1733151155291</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1733151155291</updated>
+    </task>
+    <task id="LOCAL-00005" summary="feat: Spring Quartz로 스케줄링 적용">
+      <option name="closed" value="true" />
+      <created>1733151202888</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1733151202888</updated>
+    </task>
+    <task id="LOCAL-00006" summary="feat: LoggerJobListener 적용">
+      <option name="closed" value="true" />
+      <created>1733152305168</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1733152305168</updated>
+    </task>
+    <task id="LOCAL-00007" summary="refactor: Schedule 패키지 모듈 분리">
+      <option name="closed" value="true" />
+      <created>1733204632925</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1733204632925</updated>
+    </task>
+    <task id="LOCAL-00008" summary="chore: git ignore 적용">
+      <option name="closed" value="true" />
+      <created>1733204737196</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1733204737196</updated>
+    </task>
+    <task id="LOCAL-00009" summary="remove: 사용하지 않는 파일 삭제">
+      <option name="closed" value="true" />
+      <created>1733204893633</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1733204893633</updated>
+    </task>
+    <task id="LOCAL-00010" summary="feat: JobDataMap 사용 로직 추가">
+      <option name="closed" value="true" />
+      <created>1733208430648</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1733208430648</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="chore: MySQL 의존성 추가" />
+    <MESSAGE value="feat: Spring Scheduler 적용" />
+    <MESSAGE value="chore: Spring Quartz 의존성 추가" />
+    <MESSAGE value="feat: Spring Quartz로 스케줄링 적용" />
+    <MESSAGE value="feat: LoggerJobListener 적용" />
+    <MESSAGE value="refactor: Schedule 패키지 모듈 분리" />
+    <MESSAGE value="chore: git ignore 적용" />
+    <MESSAGE value="remove: 사용하지 않는 파일 삭제" />
+    <MESSAGE value="feat: JobDataMap 사용 로직 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: JobDataMap 사용 로직 추가" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

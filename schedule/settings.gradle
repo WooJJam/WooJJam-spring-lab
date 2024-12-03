@@ -1,4 +1,0 @@
-rootProject.name = 'schedule'
-
-include("spring-quartz")
-include("spring-scheduler")

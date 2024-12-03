@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/spring-quartz.iml" filepath="$PROJECT_DIR$/.idea/modules/spring-quartz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/spring-quartz.main.iml" filepath="$PROJECT_DIR$/.idea/modules/spring-quartz.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/spring-quartz.test.iml" filepath="$PROJECT_DIR$/.idea/modules/spring-quartz.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/spring-scheduler.iml" filepath="$PROJECT_DIR$/.idea/modules/spring-scheduler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/spring-scheduler.main.iml" filepath="$PROJECT_DIR$/.idea/modules/spring-scheduler.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/spring-scheduler.test.iml" filepath="$PROJECT_DIR$/.idea/modules/spring-scheduler.test.iml" />
+    </modules>
+  </component>
+</project>
