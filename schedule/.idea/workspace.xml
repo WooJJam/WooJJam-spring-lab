@@ -4,44 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d39b908-089f-4651-8bea-3e7ce9ab512f" name="Changes" comment="feat: JobDataMap 사용 로직 추가">
-      <change afterPath="$PROJECT_DIR$/../.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/libraries/gradle_wrapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/libraries/spring_quartz_0_0_1_SNAPSHOT.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/modules/schedule.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/modules/spring-quartz.main.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/modules/spring-scheduler.main.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/spring-quartz.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/spring-quartz.main.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/spring-quartz.test.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/spring-scheduler.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/spring-scheduler.main.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/spring-scheduler.test.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/match/Match.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/match/MatchJob.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/match/MatchRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/match/MatchService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-quartz/src/test/java/com/woojjam/schedule/quartz/match/MatchRepositoryTest.java" afterDir="false" />
+    <list default="true" id="4d39b908-089f-4651-8bea-3e7ce9ab512f" name="Changes" comment="feat: Scheduler 모듈 구조 변경">
+      <change afterPath="$PROJECT_DIR$/.idea/git_toolbox_prj.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_mysema_commons_mysema_commons_lang_0_2_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_querydsl_codegen_utils_5_1_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_querydsl_querydsl_apt_jakarta_5_1_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_querydsl_querydsl_codegen_5_1_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_querydsl_querydsl_core_5_1_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_querydsl_querydsl_jpa_jakarta_5_1_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_github_classgraph_classgraph_4_8_146.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__javax_inject_javax_inject_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_eclipse_jdt_ecj_3_26_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/match/CustomMatchRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/match/CustomMatchRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/match/JpaConfig.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/spring-quartz/src/test/resources/application-local.yml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/spring-quartz/src/test/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/spring-quartz.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/spring-quartz.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/spring-quartz.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/spring-quartz.test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-quartz/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/spring-quartz/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spring-quartz/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/spring-quartz/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/LoggerJob.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/LoggerJob.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/LoggerJobListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/LoggerJobListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/LoggerQuartz.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/LoggerQuartz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/QuartzApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/QuartzApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/QuartzSchedulerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/QuartzSchedulerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/match/MatchRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/match/MatchRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/match/MatchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/match/MatchService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spring-quartz/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-quartz/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-quartz/src/test/java/com/woojjam/schedule/quartz/QuartzApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-scheduler/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/spring-scheduler/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-quartz/src/test/java/com/woojjam/schedule/quartz/match/MatchRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-quartz/src/test/java/com/woojjam/schedule/quartz/match/MatchRepositoryTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +67,23 @@
         </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="spring-quartz" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="spring-quartz" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="spring-quartz" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -89,8 +93,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -113,6 +118,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Gradle.Build schedule.executor": "Run",
+    "Gradle.Build spring-quartz.executor": "Run",
     "Gradle.MatchRepositoryTest.executor": "Run",
     "Gradle.MatchRepositoryTest.매치_시작_2시간전_조회 (1).executor": "Run",
     "Gradle.MatchRepositoryTest.매치_시작_2시간전_조회.executor": "Run",
@@ -128,6 +134,7 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "Spring Boot.QuartzApplication.executor": "Run",
     "Spring Boot.ScheduleApplication.executor": "Run",
@@ -136,7 +143,7 @@
     "git-widget-placeholder": "main",
     "jdk.selected.JAVA_MODULE": "17",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/woojjam/Desktop/study/backend/sping/spring-labs/schedule",
+    "last_opened_file_path": "/Users/woojjam/Desktop/study/backend/sping/spring-labs/schedule/spring-quartz/src/test",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -177,7 +184,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.MatchRepositoryTest">
+  <component name="RunManager" selected="Gradle.MatchRepositoryTest.매치_시작_2시간전_조회 (1)">
     <configuration name="MatchRepositoryTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -334,11 +341,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.MatchRepositoryTest.매치_시작_2시간전_조회 (1)" />
+        <item itemvalue="Gradle.schedule:spring-quartz [build]" />
         <item itemvalue="Gradle.MatchRepositoryTest" />
         <item itemvalue="Gradle.schedule:spring-scheduler [build]" />
         <item itemvalue="Gradle.spring-scheduler [clean]" />
-        <item itemvalue="Gradle.MatchRepositoryTest.매치_시작_2시간전_조회 (1)" />
-        <item itemvalue="Gradle.schedule:spring-quartz [build]" />
       </list>
     </recent_temporary>
   </component>
@@ -353,7 +360,7 @@
       <workItem from="1733118142715" duration="19210000" />
       <workItem from="1733204217058" duration="5829000" />
       <workItem from="1733211544502" duration="215000" />
-      <workItem from="1733212805862" duration="717000" />
+      <workItem from="1733212805862" duration="5526000" />
     </task>
     <task id="LOCAL-00001" summary="chore: MySQL 의존성 추가">
       <option name="closed" value="true" />
@@ -435,7 +442,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733208430648</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="feat: Scheduler 모듈 구조 변경">
+      <option name="closed" value="true" />
+      <created>1733223880815</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1733223880815</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -462,7 +477,8 @@
     <MESSAGE value="chore: git ignore 적용" />
     <MESSAGE value="remove: 사용하지 않는 파일 삭제" />
     <MESSAGE value="feat: JobDataMap 사용 로직 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: JobDataMap 사용 로직 추가" />
+    <MESSAGE value="feat: Scheduler 모듈 구조 변경" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Scheduler 모듈 구조 변경" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
