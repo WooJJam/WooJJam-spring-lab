@@ -1,4 +1,4 @@
-package com.woojjam.schedule;
+package com.woojjam.schedule.springscheduler;
 
 import org.springframework.stereotype.Service;
 

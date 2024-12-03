@@ -1,4 +1,4 @@
-package com.woojjam.schedule;
+package com.woojjam.schedule.springscheduler;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

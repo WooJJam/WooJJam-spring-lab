@@ -1,10 +1,10 @@
-package com.woojjam.schedule;
+package com.woojjam.schedule.springscheduler;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ScheduleApplicationTests {
+class SpringschedulerApplicationTests {
 
 	@Test
 	void contextLoads() {

@@ -1,13 +1,13 @@
-package com.woojjam.schedule;
+package com.woojjam.schedule.springscheduler;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ScheduleApplication {
+public class SpringschedulerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ScheduleApplication.class, args);
+		SpringApplication.run(SpringschedulerApplication.class, args);
 	}
 
 }

@@ -4,7 +4,7 @@ plugins {
 	id 'io.spring.dependency-management' version '1.1.6'
 }
 
-group = 'com.woojjam'
+group = 'woojjam'
 version = '0.0.1-SNAPSHOT'
 
 java {
@@ -13,30 +13,53 @@ java {
 	}
 }
 
-configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
-}
+bootJar { enabled = false }
+jar { enabled = true }
 
 repositories {
 	mavenCentral()
 }
 
-dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	compileOnly 'org.projectlombok:lombok'
-	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+allprojects {
+	group = 'woojjam'
+	version = '0.0.1-SNAPSHOT'
+	sourceCompatibility = '17'
 
-	runtimeOnly 'com.mysql:mysql-connector-j'
+	apply plugin: 'java'
+	apply plugin: 'java-library'
+	apply plugin: 'org.springframework.boot'
+	apply plugin: 'io.spring.dependency-management'
 
-	implementation "org.springframework.boot:spring-boot-starter-quartz"
-}
+	configurations {
+		compileOnly {
+			extendsFrom annotationProcessor
+		}
+	}
 
+	repositories {
+		mavenCentral()
+	}
 
-tasks.named('test') {
-	useJUnitPlatform()
+	dependencies {
+
+		implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+		implementation 'org.springframework.boot:spring-boot-starter-web'
+		compileOnly 'org.projectlombok:lombok'
+		annotationProcessor 'org.projectlombok:lombok'
+		testImplementation 'org.springframework.boot:spring-boot-starter-test'
+		testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+		runtimeOnly 'com.mysql:mysql-connector-j'
+
+		testImplementation 'org.springframework.boot:spring-boot-starter-test'
+		testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+		testCompileOnly 'org.projectlombok:lombok'
+		testAnnotationProcessor 'org.projectlombok:lombok'
+
+	}
+
+	tasks.named('test') {
+		useJUnitPlatform()
+	}
+
 }
