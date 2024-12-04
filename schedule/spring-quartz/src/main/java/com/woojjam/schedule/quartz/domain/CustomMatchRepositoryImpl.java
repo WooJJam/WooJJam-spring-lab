@@ -1,6 +1,7 @@
-package com.woojjam.schedule.quartz.match;
+package com.woojjam.schedule.quartz.domain;
 
-import static com.woojjam.schedule.quartz.match.QMatch.*;
+
+import static com.woojjam.schedule.quartz.domain.QMatch.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -9,8 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
 
 @Repository

@@ -1,4 +1,4 @@
-package com.woojjam.schedule.quartz.match;
+package com.woojjam.schedule.quartz;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

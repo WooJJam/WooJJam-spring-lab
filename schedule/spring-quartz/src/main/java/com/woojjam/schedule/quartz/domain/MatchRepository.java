@@ -1,4 +1,4 @@
-package com.woojjam.schedule.quartz.match;
+package com.woojjam.schedule.quartz.domain;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

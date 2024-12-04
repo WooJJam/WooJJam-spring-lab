@@ -1,4 +1,4 @@
-package com.woojjam.schedule.quartz.match;
+package com.woojjam.schedule.quartz.domain;
 
 import java.time.LocalDateTime;
 
@@ -15,10 +15,18 @@ import lombok.extern.slf4j.Slf4j;
 public class MatchService {
 
 	private final MatchRepository matchRepository;
+	private final UserRepository userRepository;
+	private final MatchReservationRepository matchReservationRepository;
 
 	// @PostConstruct
 	@Transactional
+	@PostConstruct
 	public void init() {
+		User user = User.builder()
+			.username("jaemin")
+			.build();
+		userRepository.save(user);
+
 		LocalDateTime startAt = LocalDateTime.now();
 		LocalDateTime endAt = startAt.plusHours(2);
 		Match match = Match.builder()
@@ -36,5 +44,13 @@ public class MatchService {
 			.endAt(endAt)
 			.build();
 		matchRepository.save(match2);
+
+		MatchReservation matchReservation1 = MatchReservation.builder()
+			.match(match2)
+			.user(user)
+			.build();
+
+		matchReservationRepository.save(matchReservation1);
+
 	}
 }
