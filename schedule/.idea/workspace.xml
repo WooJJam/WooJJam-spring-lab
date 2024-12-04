@@ -4,20 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d39b908-089f-4651-8bea-3e7ce9ab512f" name="Changes" comment="feat: 초기 데이터 설정">
-      <change afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/DataInitializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-quartz/src/main/resources/quartz.yml" afterDir="false" />
+    <list default="true" id="4d39b908-089f-4651-8bea-3e7ce9ab512f" name="Changes" comment="feat: 매치 시작이 2시간전인 매치 조회 스케줄링 quartz로 작성">
+      <change afterPath="$PROJECT_DIR$/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/DataInitializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/JpaConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/domain/CustomMatchRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/domain/CustomMatchRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/domain/Match.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/domain/MatchRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/domain/MatchReservation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/domain/MatchReservationRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/domain/MatchService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/spring-scheduler.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/spring-scheduler.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/spring-scheduler.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/spring-scheduler.test.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/LoggerJob.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/LoggerJob.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/domain/MatchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/domain/MatchService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/shceduler/MatchCancelScheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/shceduler/MatchCancelScheduler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/shceduler/MatchJob.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/shceduler/MatchJob.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-quartz/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-quartz/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-scheduler/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/spring-scheduler/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/SchedulerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/SchedulerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/domain/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/domain/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-scheduler/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-scheduler/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -102,6 +116,7 @@
   "keyToString": {
     "Gradle.Build schedule.executor": "Run",
     "Gradle.Build spring-quartz.executor": "Run",
+    "Gradle.Build spring-scheduler.executor": "Run",
     "Gradle.MatchRepositoryTest.executor": "Run",
     "Gradle.MatchRepositoryTest.매치_시작_2시간전_조회 (1).executor": "Run",
     "Gradle.MatchRepositoryTest.매치_시작_2시간전_조회.executor": "Run",
@@ -121,12 +136,13 @@
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "Spring Boot.QuartzApplication.executor": "Run",
     "Spring Boot.ScheduleApplication.executor": "Run",
+    "Spring Boot.SpringschedulerApplication.executor": "Run",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "git-widget-placeholder": "main",
     "jdk.selected.JAVA_MODULE": "17",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/woojjam/Desktop/study/backend/sping/spring-labs/schedule/spring-quartz/src/test",
+    "last_opened_file_path": "/Users/woojjam/Desktop/study/backend/sping/spring-labs/schedule/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -136,16 +152,16 @@
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "settings.editor.selected.configurable": "editor.preferences.import",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler" />
       <recent name="$PROJECT_DIR$/spring-quartz/src/test" />
       <recent name="$PROJECT_DIR$/spring-scheduler/src/main/resources" />
       <recent name="$PROJECT_DIR$/spring-quartz/src/main/resources" />
-      <recent name="$PROJECT_DIR$/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler" />
       <recent name="$PROJECT_DIR$/quartz/src/main/java/com/woojjam/schedule/quartz" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
@@ -170,7 +186,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.QuartzApplication">
+  <component name="RunManager" selected="Spring Boot.SpringschedulerApplication">
     <configuration name="MatchRepositoryTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -346,7 +362,7 @@
       <workItem from="1733118142715" duration="19210000" />
       <workItem from="1733204217058" duration="5829000" />
       <workItem from="1733211544502" duration="215000" />
-      <workItem from="1733212805862" duration="13925000" />
+      <workItem from="1733212805862" duration="16661000" />
     </task>
     <task id="LOCAL-00001" summary="chore: MySQL 의존성 추가">
       <option name="closed" value="true" />
@@ -468,7 +484,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733273464276</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="feat: 매치 시작이 2시간전인 매치 조회 스케줄링 quartz로 작성">
+      <option name="closed" value="true" />
+      <created>1733279201597</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1733279201597</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -500,7 +524,8 @@
     <MESSAGE value="chore: gitifnore 수정" />
     <MESSAGE value="feat: 초기 데이터 세팅" />
     <MESSAGE value="feat: 초기 데이터 설정" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 초기 데이터 설정" />
+    <MESSAGE value="feat: 매치 시작이 2시간전인 매치 조회 스케줄링 quartz로 작성" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 매치 시작이 2시간전인 매치 조회 스케줄링 quartz로 작성" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

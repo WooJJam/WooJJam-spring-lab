@@ -2,6 +2,9 @@ package com.woojjam.schedule.springscheduler;
 
 import org.springframework.stereotype.Service;
 
+import com.woojjam.schedule.springscheduler.domain.User;
+import com.woojjam.schedule.springscheduler.domain.UserRepository;
+
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor

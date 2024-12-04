@@ -2,6 +2,7 @@ package com.woojjam.schedule.springscheduler;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,6 +10,10 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.woojjam.schedule.springscheduler.domain.Match;
+import com.woojjam.schedule.springscheduler.domain.MatchService;
+import com.woojjam.schedule.springscheduler.domain.User;
 
 import lombok.RequiredArgsConstructor;
 
@@ -19,6 +24,7 @@ import lombok.RequiredArgsConstructor;
 public class SchedulerConfig {
 
 	private final UserService userService;
+	private final MatchService matchService;
 	private static final Logger log = LoggerFactory.getLogger(SchedulerConfig.class);
 
 	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
@@ -40,9 +46,11 @@ public class SchedulerConfig {
 	}
 
 	@Scheduled(cron = "0 * * * * *")
-	public void logger4() {
-		log.info("This log is Logger4 Method {}", dateFormat.format(new Date()));
-		User user = userService.read(1L);
-		user.updateUsername("cron update username");
+	public void cancelMatch() {
+		log.info("This log is cancelMatch Method {}", dateFormat.format(new Date()));
+		List<Match> match = matchService.findMatch();
+		for (Match m : match) {
+			log.info("find Match = {}", m);
+		}
 	}
 }

@@ -1,4 +1,4 @@
-package com.woojjam.schedule.springscheduler;
+package com.woojjam.schedule.springscheduler.domain;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
