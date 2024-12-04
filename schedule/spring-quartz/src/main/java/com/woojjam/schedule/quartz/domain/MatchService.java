@@ -1,6 +1,7 @@
 package com.woojjam.schedule.quartz.domain;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,7 +28,7 @@ public class MatchService {
 			.build();
 		userRepository.save(user);
 
-		LocalDateTime startAt = LocalDateTime.now();
+		LocalDateTime startAt = LocalDateTime.now().plusMinutes(30);
 		LocalDateTime endAt = startAt.plusHours(2);
 		Match match = Match.builder()
 			.total(10)
@@ -52,5 +53,10 @@ public class MatchService {
 
 		matchReservationRepository.save(matchReservation1);
 
+	}
+
+	@Transactional(readOnly = true)
+	public List<Match> findMatch() {
+		return matchRepository.findMatch();
 	}
 }

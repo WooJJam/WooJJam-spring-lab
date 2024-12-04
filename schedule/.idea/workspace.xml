@@ -4,23 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d39b908-089f-4651-8bea-3e7ce9ab512f" name="Changes" comment="chore: gitifnore 수정">
+    <list default="true" id="4d39b908-089f-4651-8bea-3e7ce9ab512f" name="Changes" comment="feat: 초기 데이터 설정">
       <change afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/DataInitializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/domain/MatchReservation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/domain/MatchReservationRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/domain/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/domain/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/shceduler/MatchCancelScheduler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/shceduler/MatchJob.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-quartz/src/main/resources/quartz.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/match/CustomMatchRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/domain/CustomMatchRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/match/CustomMatchRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/domain/CustomMatchRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/match/JpaConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/JpaConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/match/Match.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/domain/Match.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/match/MatchJob.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/match/MatchRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/domain/MatchRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/match/MatchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/domain/MatchService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-quartz/src/test/java/com/woojjam/schedule/quartz/match/MatchRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-quartz/src/test/java/com/woojjam/schedule/quartz/match/MatchRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/LoggerJob.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/LoggerJob.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/domain/MatchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/domain/MatchService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/shceduler/MatchCancelScheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/shceduler/MatchCancelScheduler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/shceduler/MatchJob.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-quartz/src/main/java/com/woojjam/schedule/quartz/shceduler/MatchJob.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-quartz/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-quartz/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -354,7 +346,7 @@
       <workItem from="1733118142715" duration="19210000" />
       <workItem from="1733204217058" duration="5829000" />
       <workItem from="1733211544502" duration="215000" />
-      <workItem from="1733212805862" duration="8795000" />
+      <workItem from="1733212805862" duration="13925000" />
     </task>
     <task id="LOCAL-00001" summary="chore: MySQL 의존성 추가">
       <option name="closed" value="true" />
@@ -468,7 +460,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733232173098</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="feat: 초기 데이터 설정">
+      <option name="closed" value="true" />
+      <created>1733273464276</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1733273464276</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -498,7 +498,19 @@
     <MESSAGE value="feat: Scheduler 모듈 구조 변경" />
     <MESSAGE value="test: 2시간 이내 매치 조회 테스트 작성" />
     <MESSAGE value="chore: gitifnore 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore: gitifnore 수정" />
+    <MESSAGE value="feat: 초기 데이터 세팅" />
+    <MESSAGE value="feat: 초기 데이터 설정" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 초기 데이터 설정" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="org.springframework.beans.factory.BeanCreationException" package="org.springframework.beans.factory" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
