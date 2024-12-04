@@ -22,7 +22,7 @@ public class CustomMatchRepositoryImpl implements CustomMatchRepository {
 		LocalDateTime timeRange = now.plusMinutes(90);
 
 		return jpaQueryFactory.selectFrom(match)
-			.where(match.startAt.between(now, timeRange))
+			.where(match.startAt.between(now, timeRange), match.matchStatus.eq(MatchStatus.WAITING))
 			.fetch();
 	}
 }

@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import com.woojjam.schedule.springscheduler.domain.MatchStatus;
+
 @Component
 public class DataInitializer implements CommandLineRunner {
 
@@ -50,15 +52,21 @@ public class DataInitializer implements CommandLineRunner {
 	}
 
 	private void initMatch(Connection conn) throws SQLException {
-		String sqlMatch = "INSERT INTO test_match (total, remain, start_at, end_at) VALUES (?, ?, ?, ?)";
+		String sqlMatch = "INSERT INTO test_match (total, remain, start_at, end_at, match_status) VALUES (?, ?, ?, ?, ?)";
 		PreparedStatement pstmtMatch = conn.prepareStatement(sqlMatch);
 
 		LocalDateTime now = LocalDateTime.now();
 		Random random = new Random();
 		for (int i = 1; i <= 100; i++) {
+
+			if (i < 4) {
+				pstmtMatch.setString(5, MatchStatus.FULL.toString());
+			} else {
+				pstmtMatch.setString(5, MatchStatus.WAITING.toString());
+			}
+
 			LocalDateTime startAt = now.plusMinutes(random.nextInt(30) + 10);
 			LocalDateTime endAt = startAt.plusHours(2);
-
 			int total = 10;
 			int remain = i % 10;
 

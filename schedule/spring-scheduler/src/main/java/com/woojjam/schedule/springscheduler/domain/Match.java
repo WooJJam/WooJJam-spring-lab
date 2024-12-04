@@ -3,6 +3,8 @@ package com.woojjam.schedule.springscheduler.domain;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -18,20 +20,30 @@ import lombok.ToString;
 @ToString
 public class Match {
 
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private int total;
 	private int remain;
+
+	@Enumerated(EnumType.STRING)
+	private MatchStatus matchStatus;
 	private LocalDateTime startAt;
 	private LocalDateTime endAt;
 
 	@Builder
-	public Match(final Long id, final int total, final int remain, final LocalDateTime startAt,
+	public Match(final Long id, final int total, final int remain, final MatchStatus matchStatus, final LocalDateTime startAt,
 		final LocalDateTime endAt) {
 		this.id = id;
 		this.total = total;
 		this.remain = remain;
+		this.matchStatus = matchStatus;
 		this.startAt = startAt;
 		this.endAt = endAt;
+	}
+
+	public void updateCancelMatch() throws InterruptedException {
+		// Thread.sleep(1000);
+		this.matchStatus = MatchStatus.CANCELLED;
 	}
 }
