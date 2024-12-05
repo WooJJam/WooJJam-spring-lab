@@ -42,8 +42,7 @@ public class Match {
 		this.endAt = endAt;
 	}
 
-	public void updateCancelMatch() throws InterruptedException {
-		// Thread.sleep(1000);
+	public void updateCancelMatch() {
 		this.matchStatus = MatchStatus.CANCELLED;
 	}
 }

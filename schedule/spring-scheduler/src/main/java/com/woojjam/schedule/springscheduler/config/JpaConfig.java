@@ -1,4 +1,4 @@
-package com.woojjam.schedule.springscheduler;
+package com.woojjam.schedule.springscheduler.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
