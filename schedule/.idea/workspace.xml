@@ -4,17 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d39b908-089f-4651-8bea-3e7ce9ab512f" name="Changes" comment="feat: SchedulerConfigurer 으로 ThreadPool 설정">
-      <change afterPath="$PROJECT_DIR$/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/config/AsyncConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/config/MatchScheduler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-scheduler/src/test/java/com/woojjam/schedule/springscheduler/match/MatchSchedulerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_context_6_2_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_context_6_2_0.xml" afterDir="false" />
+    <list default="true" id="4d39b908-089f-4651-8bea-3e7ce9ab512f" name="Changes" comment="test: ThreadPoolTaskExecutor을 설정하여 @Async ThreadPool 조정 및 테스트">
+      <change afterPath="$PROJECT_DIR$/spring-scheduler/src/test/java/com/woojjam/schedule/springscheduler/match/ThreadExecutionPerformanceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spring-quartz/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-quartz/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/DataInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/DataInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/JpaConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/config/JpaConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/SchedulerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/config/SchedulerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/domain/Match.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/domain/Match.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/SchedulerConfigurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/SchedulerConfigurer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/config/AsyncConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/config/AsyncConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-scheduler/src/test/java/com/woojjam/schedule/springscheduler/match/MatchSchedulerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-scheduler/src/test/java/com/woojjam/schedule/springscheduler/match/MatchMultiThreadAsyncTestSchedulerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,6 +115,7 @@
     "Gradle.Build spring-quartz.executor": "Run",
     "Gradle.Build spring-scheduler.executor": "Run",
     "Gradle.Download Sources.executor": "Run",
+    "Gradle.MatchMultiThreadAsyncTestSchedulerTest.executor": "Run",
     "Gradle.MatchRepositoryTest.executor": "Run",
     "Gradle.MatchRepositoryTest.매치_시작_2시간전_조회 (1).executor": "Run",
     "Gradle.MatchRepositoryTest.매치_시작_2시간전_조회.executor": "Run",
@@ -124,6 +125,12 @@
     "Gradle.MultiThreadTest.executor": "Run",
     "Gradle.MultiThreadTest.매치_상태_업데이트_멀티_스레드_적용.executor": "Run",
     "Gradle.MultiThreadTest.스레드가_10개일때_1000개의_매치_업데이트.executor": "Run",
+    "Gradle.ThreadExecutionPerformanceTest.executor": "Run",
+    "Gradle.ThreadExecutionPerformanceTest.동기_단일_스레드_작업_100개_테스트.executor": "Run",
+    "Gradle.ThreadExecutionPerformanceTest.동기_멀티_스레드_작업_100개_테스트.executor": "Run",
+    "Gradle.ThreadExecutionPerformanceTest.스레드_10개_작업_100개_병렬_테스트.executor": "Run",
+    "Gradle.ThreadExecutionPerformanceTest.스레드_1개_100개_병렬_테스트.executor": "Run",
+    "Gradle.ThreadExecutionPerformanceTest.스레드_50개_작업_100개_병렬_테스트.executor": "Run",
     "Gradle.schedule:spring-quartz [build].executor": "Run",
     "Gradle.schedule:spring-quartz [clean].executor": "Run",
     "Gradle.schedule:spring-scheduler [build].executor": "Run",
@@ -188,8 +195,8 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.MatchSchedulerTest.매치_스케줄러_멀티_쓰레드_테스트">
-    <configuration name="MatchSchedulerTest.매치_스케줄러_멀티_쓰레드_테스트" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.ThreadExecutionPerformanceTest">
+    <configuration name="MatchMultiThreadAsyncTestSchedulerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/spring-scheduler" />
@@ -202,7 +209,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.woojjam.schedule.springscheduler.match.MatchSchedulerTest.매치_스케줄러_멀티_쓰레드_테스트&quot;" />
+            <option value="&quot;com.woojjam.schedule.springscheduler.match.MatchMultiThreadAsyncTestSchedulerTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -237,7 +244,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="MultiThreadTest.스레드가_10개일때_1000개의_매치_업데이트" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ThreadExecutionPerformanceTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/spring-scheduler" />
@@ -250,7 +257,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.woojjam.schedule.springscheduler.match.MultiThreadTest.스레드가_10개일때_1000개의_매치_업데이트&quot;" />
+            <option value="&quot;com.woojjam.schedule.springscheduler.match.ThreadExecutionPerformanceTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -261,7 +268,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="MultiThreadTest.매치_상태_업데이트_멀티_스레드_적용" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ThreadExecutionPerformanceTest.스레드_1개_100개_병렬_테스트" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/spring-scheduler" />
@@ -274,7 +281,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.woojjam.schedule.springscheduler.match.MultiThreadTest.매치_상태_업데이트_멀티_스레드_적용&quot;" />
+            <option value="&quot;com.woojjam.schedule.springscheduler.match.ThreadExecutionPerformanceTest.스레드_1개_100개_병렬_테스트&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -285,26 +292,52 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="schedule:spring-scheduler [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ThreadExecutionPerformanceTest.동기_멀티_스레드_작업_100개_테스트" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/spring-scheduler" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
+        <option name="scriptParameters" value="" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value="build" />
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.woojjam.schedule.springscheduler.match.ThreadExecutionPerformanceTest.동기_멀티_스레드_작업_100개_테스트&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="ThreadExecutionPerformanceTest.동기_단일_스레드_작업_100개_테스트" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/spring-scheduler" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.woojjam.schedule.springscheduler.match.ThreadExecutionPerformanceTest.동기_단일_스레드_작업_100개_테스트&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
     <configuration name="QuartzApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
@@ -337,11 +370,11 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Gradle.MatchSchedulerTest.매치_스케줄러_멀티_쓰레드_테스트" />
+      <item itemvalue="Gradle.MatchMultiThreadAsyncTestSchedulerTest" />
       <item itemvalue="Gradle.MultiThreadTest" />
-      <item itemvalue="Gradle.MultiThreadTest.매치_상태_업데이트_멀티_스레드_적용" />
-      <item itemvalue="Gradle.MultiThreadTest.스레드가_10개일때_1000개의_매치_업데이트" />
-      <item itemvalue="Gradle.schedule:spring-scheduler [build]" />
+      <item itemvalue="Gradle.ThreadExecutionPerformanceTest.스레드_1개_100개_병렬_테스트" />
+      <item itemvalue="Gradle.ThreadExecutionPerformanceTest" />
+      <item itemvalue="Gradle.ThreadExecutionPerformanceTest.동기_멀티_스레드_작업_100개_테스트" />
       <item itemvalue="Spring Boot.QuartzApplication" />
       <item itemvalue="Spring Boot.SpringschedulerApplication" />
       <item itemvalue="Spring Boot.SpringschedulerApplication (1)" />
@@ -349,11 +382,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.MatchSchedulerTest.매치_스케줄러_멀티_쓰레드_테스트" />
+        <item itemvalue="Gradle.ThreadExecutionPerformanceTest" />
+        <item itemvalue="Gradle.ThreadExecutionPerformanceTest.동기_멀티_스레드_작업_100개_테스트" />
         <item itemvalue="Gradle.MultiThreadTest" />
-        <item itemvalue="Gradle.MultiThreadTest.스레드가_10개일때_1000개의_매치_업데이트" />
-        <item itemvalue="Gradle.MultiThreadTest.매치_상태_업데이트_멀티_스레드_적용" />
-        <item itemvalue="Gradle.schedule:spring-scheduler [build]" />
+        <item itemvalue="Gradle.ThreadExecutionPerformanceTest.스레드_1개_100개_병렬_테스트" />
+        <item itemvalue="Gradle.MatchMultiThreadAsyncTestSchedulerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -368,7 +401,9 @@
       <workItem from="1733118142715" duration="19210000" />
       <workItem from="1733204217058" duration="5829000" />
       <workItem from="1733211544502" duration="215000" />
-      <workItem from="1733212805862" duration="43860000" />
+      <workItem from="1733212805862" duration="57277000" />
+      <workItem from="1733462252661" duration="1540000" />
+      <workItem from="1733468557757" duration="5154000" />
     </task>
     <task id="LOCAL-00001" summary="chore: MySQL 의존성 추가">
       <option name="closed" value="true" />
@@ -530,7 +565,23 @@
       <option name="project" value="LOCAL" />
       <updated>1733322509374</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="test: Scheduler Configurer로 멀티 스레드 적용">
+      <option name="closed" value="true" />
+      <created>1733364619377</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1733364619377</updated>
+    </task>
+    <task id="LOCAL-00022" summary="test: ThreadPoolTaskExecutor을 설정하여 @Async ThreadPool 조정 및 테스트">
+      <option name="closed" value="true" />
+      <created>1733364912329</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1733364912329</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -567,7 +618,9 @@
     <MESSAGE value="feat: MatchStatus 추가" />
     <MESSAGE value="test: Thread 수에 따른 메소드 실행 시간 테스트" />
     <MESSAGE value="feat: SchedulerConfigurer 으로 ThreadPool 설정" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: SchedulerConfigurer 으로 ThreadPool 설정" />
+    <MESSAGE value="test: Scheduler Configurer로 멀티 스레드 적용" />
+    <MESSAGE value="test: ThreadPoolTaskExecutor을 설정하여 @Async ThreadPool 조정 및 테스트" />
+    <option name="LAST_COMMIT_MESSAGE" value="test: ThreadPoolTaskExecutor을 설정하여 @Async ThreadPool 조정 및 테스트" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

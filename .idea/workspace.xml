@@ -5,44 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9532c6bf-f9e5-41b6-8cfd-59eedf43a468" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/gradle_wrapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/spring_quartz_0_0_1_SNAPSHOT.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/schedule.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/spring-quartz.main.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/spring-scheduler.main.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schedule/.idea/modules/spring-quartz.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schedule/.idea/modules/spring-quartz.main.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schedule/.idea/modules/spring-quartz.test.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schedule/.idea/modules/spring-scheduler.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schedule/.idea/modules/spring-scheduler.main.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schedule/.idea/modules/spring-scheduler.test.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schedule/setting.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schedule/spring-quartz/src/main/java/com/woojjam/schedule/quartz/match/Match.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schedule/spring-quartz/src/main/java/com/woojjam/schedule/quartz/match/MatchJob.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schedule/spring-quartz/src/main/java/com/woojjam/schedule/quartz/match/MatchRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schedule/spring-quartz/src/main/java/com/woojjam/schedule/quartz/match/MatchService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schedule/spring-quartz/src/test/java/com/woojjam/schedule/quartz/match/MatchRepositoryTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schedule/spring-quartz/src/test/resources/application-local.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schedule/spring-quartz/src/test/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/schedule/spring-scheduler/src/test/java/com/woojjam/schedule/springscheduler/match/ThreadExecutionPerformanceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/schedule/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule/settings.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule/spring-quartz/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/schedule/spring-quartz/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule/spring-quartz/src/main/java/com/woojjam/schedule/quartz/LoggerJob.java" beforeDir="false" afterPath="$PROJECT_DIR$/schedule/spring-quartz/src/main/java/com/woojjam/schedule/quartz/LoggerJob.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule/spring-quartz/src/main/java/com/woojjam/schedule/quartz/LoggerJobListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/schedule/spring-quartz/src/main/java/com/woojjam/schedule/quartz/LoggerJobListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule/spring-quartz/src/main/java/com/woojjam/schedule/quartz/LoggerQuartz.java" beforeDir="false" afterPath="$PROJECT_DIR$/schedule/spring-quartz/src/main/java/com/woojjam/schedule/quartz/LoggerQuartz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule/spring-quartz/src/main/java/com/woojjam/schedule/quartz/QuartzApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/schedule/spring-quartz/src/main/java/com/woojjam/schedule/QuartzApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule/spring-quartz/src/main/java/com/woojjam/schedule/quartz/QuartzSchedulerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/schedule/spring-quartz/src/main/java/com/woojjam/schedule/quartz/QuartzSchedulerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/schedule/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/schedule/spring-quartz/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/schedule/spring-quartz/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule/spring-quartz/src/test/java/com/woojjam/schedule/quartz/QuartzApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule/spring-scheduler/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/schedule/spring-scheduler/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/DataInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/schedule/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/DataInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/SchedulerConfigurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/schedule/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/SchedulerConfigurer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/config/AsyncConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/schedule/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/config/AsyncConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule/spring-scheduler/src/test/java/com/woojjam/schedule/springscheduler/match/MatchSchedulerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/schedule/spring-scheduler/src/test/java/com/woojjam/schedule/springscheduler/match/MatchMultiThreadAsyncTestSchedulerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,9 +38,25 @@
         <task path="$PROJECT_DIR$/schedule/spring-quartz">
           <activation />
         </task>
+        <task path="$PROJECT_DIR$/schedule">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/schedule/spring-scheduler">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="schedule" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="schedule" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -98,6 +86,16 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Gradle.Build spring-scheduler.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MatchMultiThreadAsyncTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MatchSchedulerTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ThreadExecutionPerformanceTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ThreadExecutionPerformanceTest.동기_단일_스레드_작업_100개_테스트.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ThreadExecutionPerformanceTest.동기_단일_스레드_작업_20개_테스트.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ThreadExecutionPerformanceTest.동기_멀티_스레드_작업_100개_테스트.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ThreadExecutionPerformanceTest.동기_멀티_스레드_작업_20개_테스트.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ThreadExecutionPerformanceTest.스레드_10개_작업_100개_병렬_테스트.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ThreadExecutionPerformanceTest.스레드_10개_작업_20개_병렬_테스트.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ThreadExecutionPerformanceTest.스레드_1개_100개_병렬_테스트.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.spring-quartz [build].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.spring-quartz [clean].executor&quot;: &quot;Run&quot;,
     &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
@@ -110,7 +108,7 @@
     &quot;Spring Boot.SpringschedulerApplication.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/woojjam/Desktop/study/backend/sping/spring-lab's&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/woojjam/Desktop/study/backend/sping/spring-labs&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -123,49 +121,125 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Gradle.spring-quartz [build]">
-    <configuration name="spring-quartz [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.ThreadExecutionPerformanceTest.스레드_10개_작업_100개_병렬_테스트">
+    <configuration name="ThreadExecutionPerformanceTest.스레드_10개_작업_100개_병렬_테스트" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/schedule/spring-quartz" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/schedule/spring-scheduler" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
+        <option name="scriptParameters" value="" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value="build" />
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.woojjam.schedule.springscheduler.match.ThreadExecutionPerformanceTest.스레드_10개_작업_100개_병렬_테스트&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
+      <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="spring-quartz [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ThreadExecutionPerformanceTest.스레드_10개_작업_20개_병렬_테스트" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/schedule/spring-quartz" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/schedule/spring-scheduler" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
+        <option name="scriptParameters" value="" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value="clean" />
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.woojjam.schedule.springscheduler.match.ThreadExecutionPerformanceTest.스레드_10개_작업_20개_병렬_테스트&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="ThreadExecutionPerformanceTest.스레드_1개_100개_병렬_테스트" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/schedule/spring-scheduler" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.woojjam.schedule.springscheduler.match.ThreadExecutionPerformanceTest.스레드_1개_100개_병렬_테스트&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="ThreadExecutionPerformanceTest.동기_단일_스레드_작업_100개_테스트" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/schedule/spring-scheduler" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.woojjam.schedule.springscheduler.match.ThreadExecutionPerformanceTest.동기_단일_스레드_작업_100개_테스트&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="ThreadExecutionPerformanceTest.동기_멀티_스레드_작업_100개_테스트" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/schedule/spring-scheduler" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.woojjam.schedule.springscheduler.match.ThreadExecutionPerformanceTest.동기_멀티_스레드_작업_100개_테스트&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
     <configuration name="QuartzApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
@@ -184,8 +258,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.spring-quartz [build]" />
-        <item itemvalue="Gradle.spring-quartz [clean]" />
+        <item itemvalue="Gradle.ThreadExecutionPerformanceTest.스레드_10개_작업_100개_병렬_테스트" />
+        <item itemvalue="Gradle.ThreadExecutionPerformanceTest.스레드_1개_100개_병렬_테스트" />
+        <item itemvalue="Gradle.ThreadExecutionPerformanceTest.동기_단일_스레드_작업_100개_테스트" />
+        <item itemvalue="Gradle.ThreadExecutionPerformanceTest.스레드_10개_작업_20개_병렬_테스트" />
       </list>
     </recent_temporary>
   </component>
@@ -200,6 +276,8 @@
       <workItem from="1733118093759" duration="47000" />
       <workItem from="1733211761521" duration="862000" />
       <workItem from="1733212638115" duration="99000" />
+      <workItem from="1733463520808" duration="4398000" />
+      <workItem from="1733468572595" duration="1197000" />
     </task>
     <servers />
   </component>
