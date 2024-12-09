@@ -4,17 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d39b908-089f-4651-8bea-3e7ce9ab512f" name="Changes" comment="test: ThreadPoolTaskExecutor을 설정하여 @Async ThreadPool 조정 및 테스트">
-      <change afterPath="$PROJECT_DIR$/spring-scheduler/src/test/java/com/woojjam/schedule/springscheduler/match/ThreadExecutionPerformanceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="4d39b908-089f-4651-8bea-3e7ce9ab512f" name="Changes" comment="test: 스레드 성능 테스트&#10;&#10;* 동기/비동기 단일/멀티 스레드 성능 테스트">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spring-quartz/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-quartz/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/DataInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/DataInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/SchedulerConfigurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/SchedulerConfigurer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/config/AsyncConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-scheduler/src/main/java/com/woojjam/schedule/springscheduler/config/AsyncConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-scheduler/src/test/java/com/woojjam/schedule/springscheduler/match/MatchSchedulerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-scheduler/src/test/java/com/woojjam/schedule/springscheduler/match/MatchMultiThreadAsyncTestSchedulerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -403,7 +396,7 @@
       <workItem from="1733211544502" duration="215000" />
       <workItem from="1733212805862" duration="57277000" />
       <workItem from="1733462252661" duration="1540000" />
-      <workItem from="1733468557757" duration="5154000" />
+      <workItem from="1733468557757" duration="6653000" />
     </task>
     <task id="LOCAL-00001" summary="chore: MySQL 의존성 추가">
       <option name="closed" value="true" />
@@ -581,7 +574,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733364912329</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="test: 스레드 성능 테스트&#10;&#10;* 동기/비동기 단일/멀티 스레드 성능 테스트">
+      <option name="closed" value="true" />
+      <created>1733574538899</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1733574538899</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -620,7 +621,9 @@
     <MESSAGE value="feat: SchedulerConfigurer 으로 ThreadPool 설정" />
     <MESSAGE value="test: Scheduler Configurer로 멀티 스레드 적용" />
     <MESSAGE value="test: ThreadPoolTaskExecutor을 설정하여 @Async ThreadPool 조정 및 테스트" />
-    <option name="LAST_COMMIT_MESSAGE" value="test: ThreadPoolTaskExecutor을 설정하여 @Async ThreadPool 조정 및 테스트" />
+    <MESSAGE value="test: 스레드 성능 테스트" />
+    <MESSAGE value="test: 스레드 성능 테스트&#10;&#10;* 동기/비동기 단일/멀티 스레드 성능 테스트" />
+    <option name="LAST_COMMIT_MESSAGE" value="test: 스레드 성능 테스트&#10;&#10;* 동기/비동기 단일/멀티 스레드 성능 테스트" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

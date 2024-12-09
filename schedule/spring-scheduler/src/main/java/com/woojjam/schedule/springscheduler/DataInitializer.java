@@ -59,11 +59,11 @@ public class DataInitializer implements CommandLineRunner {
 		Random random = new Random();
 		for (int i = 1; i <= 100; i++) {
 
-			if (i < 4) {
-				pstmtMatch.setString(5, MatchStatus.FULL.toString());
-			} else {
+			// if (i < 4) {
+			// 	pstmtMatch.setString(5, MatchStatus.FULL.toString());
+			// } else {
 				pstmtMatch.setString(5, MatchStatus.WAITING.toString());
-			}
+			// }
 
 			LocalDateTime startAt = now.plusMinutes(random.nextInt(30) + 10);
 			LocalDateTime endAt = startAt.plusHours(2);

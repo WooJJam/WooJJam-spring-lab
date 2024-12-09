@@ -23,7 +23,7 @@ public class MatchScheduler {
 
 	private final MatchService matchService;
 
-	@Async("schedulerTaskExecutor")
+	@Async
 	@Scheduled(fixedDelay = 10000)
 	public void findMatchScheduler() throws InterruptedException {
 		log.info("findMatchScheduler start");

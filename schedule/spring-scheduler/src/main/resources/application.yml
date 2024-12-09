@@ -19,6 +19,7 @@ spring:
 
 logging:
   level:
-#    com.woojjam.schedule: debug
+    com.woojjam.schedule.springscheduler: debug
+    com.woojjam.schedule: debug
     org.hibernate.SQL: debug
     org.hibernate.orm.jdbc.bind: trace
