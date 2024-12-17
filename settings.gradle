@@ -1,0 +1,4 @@
+rootProject.name = 'spring-labs'
+
+include("labs-domain")
+include("notification")
