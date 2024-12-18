@@ -16,7 +16,7 @@ public class User extends BaseEntity {
 
 	@Id @GeneratedValue
 	private Long id;
-
+	private String phoneNumber;
 	private String name;
 	private String nickname;
 
