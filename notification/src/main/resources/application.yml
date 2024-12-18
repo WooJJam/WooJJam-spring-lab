@@ -6,7 +6,7 @@ spring:
       local: domain
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
 logging:
   level:
     co.kr.woojjam.kakao: debug
