@@ -1,4 +1,4 @@
-package co.kr.woojjam.infrastructure;
+package co.kr.woojjam;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
