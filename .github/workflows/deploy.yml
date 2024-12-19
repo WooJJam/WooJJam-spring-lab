@@ -30,9 +30,9 @@ jobs:
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
 
-    - name: Make application-dev.yml for Owner API
+    - name: Make application-dev.yml for Infrastructure API
       run: |
-          cd spring-labs/infrastructure/src/main/resources
+          cd infrastructure/src/main/resources
           touch ./application-dev.yml
           echo "${{ secrets.DEV }}" > ./application-dev.yml
       shell: bash
@@ -40,8 +40,8 @@ jobs:
     - name: Build and Deploy Owner API
       run: |
           chmod +x ./gradlew
-          ./gradlew clean :spring-labs:infrastructure:build
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/woojjam-infrastructure-server spring-labs/infrastructure
+          ./gradlew clean :infrastructure:build
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/woojjam-infrastructure-server infrastructure
           echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/woojjam-infrastructure-server
 
