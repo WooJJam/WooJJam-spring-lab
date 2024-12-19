@@ -14,8 +14,6 @@ public class AlimTalkHeaderConfig {
 
 	@Bean
 	public RequestInterceptor requestInterceptor() {
-		return requestTemplate -> {
-			requestTemplate.header("X-Secret-Key", secretKEy);
-		};
+		return requestTemplate -> requestTemplate.header("X-Secret-Key", secretKEy);
 	}
 }
