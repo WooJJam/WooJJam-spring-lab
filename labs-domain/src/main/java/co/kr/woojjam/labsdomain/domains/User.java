@@ -22,9 +22,10 @@ public class User extends BaseEntity {
 
 
 	@Builder
-	public User(final Long id, final String name, String nickname) {
+	public User(final Long id, final String name, String nickname, String phoneNumber) {
 		this.id = id;
 		this.name = name;
 		this.nickname = nickname;
+		this.phoneNumber = phoneNumber;
 	}
 }
