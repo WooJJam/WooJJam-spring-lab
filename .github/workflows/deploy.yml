@@ -37,23 +37,33 @@ jobs:
           echo "${{ secrets.DEV }}" > ./application-dev.yml
       shell: bash
 
+      # 도커 설정
+    - name: Set Docker
+      uses: docker/setup-buildx-action@v2.9.1
+
+      # 도커 로그인
+    - name: Login Docker
+      uses: docker/login-action@v2.2.0
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_PASSWORD }}
+    
     - name: Build and Deploy Infrastructure Server
       run: |
           chmod +x ./gradlew
           ./gradlew clean :infrastructure:build
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/woojjam-infrastructure-server infrastructure
-          echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/woojjam-infrastructure-server
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/woojjam-infrastructure-server:latest infrastructure
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/woojjam-infrastructure-server:latest
 
-    - name: Deploy to Infrastructure Server
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.EC2_INSTANCE_HOST }}
-        username: ubuntu
-        key: ${{ secrets.EC2_INSTANCE_PRIVATE_KEY }}
-        script: |
-            sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/woojjam-infrastructure-server
-            sudo docker stop woojjam-infrastructure-server
-            sudo docker rm woojjam-infrastructure-server
-            sudo docker run --name woojjam-infrastructure-server -d -p 8080:8080 -e TZ=Asia/Seoul ${{ secrets.DOCKERHUB_USERNAME }}/woojjam-infrastructure-server
-            sudo docker image prune -f
+    # - name: Deploy to Infrastructure Server
+    #   uses: appleboy/ssh-action@master
+    #   with:
+    #     host: ${{ secrets.EC2_INSTANCE_HOST }}
+    #     username: ubuntu
+    #     key: ${{ secrets.EC2_INSTANCE_PRIVATE_KEY }}
+    #     script: |
+    #         sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/woojjam-infrastructure-server
+    #         sudo docker stop woojjam-infrastructure-server
+    #         sudo docker rm woojjam-infrastructure-server
+    #         sudo docker run --name woojjam-infrastructure-server -d -p 8080:8080 -e TZ=Asia/Seoul ${{ secrets.DOCKERHUB_USERNAME }}/woojjam-infrastructure-server
+    #         sudo docker image prune -f
