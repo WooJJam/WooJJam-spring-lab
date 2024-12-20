@@ -62,7 +62,7 @@ jobs:
         host: ${{ secrets.EC2_INSTANCE_HOST }}
         username: ubuntu
         key: ${{ secrets.EC2_INSTANCE_PRIVATE_KEY }}
-        source: ./infrastructure/scripts/deploy.sh
+        source: infrastructure/scripts/deploy.sh
         target: ~/spring-labs/infrastructure/
         strip_components: 2
 
