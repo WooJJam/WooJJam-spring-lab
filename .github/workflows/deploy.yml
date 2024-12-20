@@ -37,7 +37,7 @@ jobs:
           echo "${{ secrets.DEV }}" > ./application-dev.yml
       shell: bash
 
-    - name: Build and Deploy Owner API
+    - name: Build and Deploy Infrastructure Server
       run: |
           chmod +x ./gradlew
           ./gradlew clean :infrastructure:build
@@ -55,5 +55,5 @@ jobs:
             sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/woojjam-infrastructure-server
             sudo docker stop woojjam-infrastructure-server
             sudo docker rm woojjam-infrastructure-server
-            sudo docker run --name woojjam-infrastructure-server -d -p 8000:8000 -e TZ=Asia/Seoul ${{ secrets.DOCKERHUB_USERNAME }}/woojjam-infrastructure-server
+            sudo docker run --name woojjam-infrastructure-server -d -p 8080:8080 -e TZ=Asia/Seoul ${{ secrets.DOCKERHUB_USERNAME }}/woojjam-infrastructure-server
             sudo docker image prune -f
