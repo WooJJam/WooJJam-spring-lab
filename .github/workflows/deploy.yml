@@ -63,7 +63,7 @@ jobs:
         username: ubuntu
         key: ${{ secrets.EC2_INSTANCE_PRIVATE_KEY }}
         source: ./infrastructure/scripts/deploy.sh
-        target: ~/spring-labs/infrastructure/deploy.sh
+        target: ~/spring-labs/infrastructure/
 
     # - name: Deploy to Infrastructure Server
     #   uses: appleboy/ssh-action@master
