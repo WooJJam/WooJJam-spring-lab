@@ -64,7 +64,7 @@ jobs:
         key: ${{ secrets.EC2_INSTANCE_PRIVATE_KEY }}
         source: ./infrastructure/scripts/deploy.sh
         target: ~/spring-labs/infrastructure/
-        strip_components: 3
+        strip_components: 2
 
     # - name: Deploy to Infrastructure Server
     #   uses: appleboy/ssh-action@master
