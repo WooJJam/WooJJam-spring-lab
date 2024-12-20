@@ -3,4 +3,5 @@ jar { enabled = false }
 
 dependencies {
     implementation project(":labs-domain")
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
 }
