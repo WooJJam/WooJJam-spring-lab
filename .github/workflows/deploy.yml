@@ -62,8 +62,8 @@ jobs:
         host: ${{ secrets.EC2_INSTANCE_HOST }}
         username: ubuntu
         key: ${{ secrets.EC2_INSTANCE_PRIVATE_KEY }}
-        source: infrastructure/scripts/deploy.sh
-        target: /home/ubuntu/spring-labs/infrastructure/deploy.sh
+        source: ./infrastructure/scripts/deploy.sh
+        target: ~/spring-labs/infrastructure/deploy.sh
 
     # - name: Deploy to Infrastructure Server
     #   uses: appleboy/ssh-action@master
