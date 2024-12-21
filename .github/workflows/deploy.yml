@@ -74,7 +74,7 @@ jobs:
         username: ubuntu
         key: ${{ secrets.EC2_INSTANCE_PRIVATE_KEY }}
         script: |
-          export DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }}
+          export DOCKER_USERNAME=${{ secrets.DOCKERHUB_USERNAME }}
           export DOCKER_REPOSITORY=${{ secrets.INFRASTRUCTURE_DOCKER_REPOSITORY }}
           chmod +x /home/ubuntu/spring-labs/infrastructure/blue-green-deploy.sh
           /home/ubuntu/spring-labs/infrastructure/blue-green-deploy.sh
