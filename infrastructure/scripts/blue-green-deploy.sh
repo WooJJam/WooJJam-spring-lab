@@ -1,6 +1,5 @@
 #!/bin/bash
 
-CONTAINER_NAME="infrastructure"
 HEALTH_CHECK_URI="actuator/health"
 NGINX_CONFIG_PATH="/etc/nginx/conf.d/service-url.inc"
 DOCKER_USERNAME=${DOCKER_USERNAME}
@@ -73,10 +72,18 @@ EOL
 echo "> nginx reloading"
 sudo nginx -s reload
 
-# 이전 버전 삭제
-echo "기존 서비스 ${CURRENT_SERVICE} 삭제 중..."
-docker stop $CURRENT_SERVICE
-docker rm $CURRENT_SERVICE
+# 8. 이전 버전 삭제
+if [ ! -z "$CURRENT_SERVICE" ] && docker ps -a --format '{{.Names}}' | grep -q "^${CURRENT_SERVICE}$"; then
+    if docker ps --format '{{.Names}}' | grep -q "^${CURRENT_SERVICE}$"; then
+        echo "기존 서비스 ${CURRENT_SERVICE}가 실행 중입니다. 중지 및 삭제합니다..."
+        docker stop $CURRENT_SERVICE
+    else
+        echo "기존 서비스 ${CURRENT_SERVICE}는 실행 중이지 않습니다. 삭제만 진행합니다..."
+    fi
+    docker rm $CURRENT_SERVICE
+else
+    echo "기존 서비스 ${CURRENT_SERVICE}가 존재하지 않습니다. 삭제를 건너뜁니다."
+fi
 
 echo "배포 완료: ${NEW_SERVICE}가 현재 활성화되었습니다."                                                                                                                                                                                                                                                                                                                                                               
                                                                                                                                                                                                                                                                                                                                                    82,1          A
