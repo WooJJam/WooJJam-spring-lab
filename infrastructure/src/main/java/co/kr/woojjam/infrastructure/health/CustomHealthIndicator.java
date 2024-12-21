@@ -21,14 +21,8 @@ public class CustomHealthIndicator implements HealthIndicator {
 
 	@Override
 	public Health health() {
-		if (200 == HttpStatus.OK.value()) {
-			boolean status = environment.matchesProfiles("blue");
-			if (status) {
-				return Health.up().withDetail("data", "blue").build();
-			}
-			return Health.up().withDetail("data", "green").build();
-		}
-
-		return Health.down().build();
+		String port = environment.getProperty("local.server.port");
+		return Health.up()
+			.withDetail("data", port).build();
 	}
 }
