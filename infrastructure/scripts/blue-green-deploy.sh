@@ -84,6 +84,4 @@ if [ ! -z "$CURRENT_SERVICE" ] && docker ps -a --format '{{.Names}}' | grep -q "
 else
     echo "기존 서비스 ${CURRENT_SERVICE}가 존재하지 않습니다. 삭제를 건너뜁니다."
 fi
-
-echo "배포 완료: ${NEW_SERVICE}가 현재 활성화되었습니다."                                                                                                                                                                                                                                                                                                                                                               
-                                                                                                                                                                                                                                                                                                                                                   82,1          A
+echo "배포 완료: ${NEW_SERVICE}가 현재 활성화되었습니다." 
