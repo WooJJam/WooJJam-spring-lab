@@ -15,7 +15,7 @@ elif docker ps --format '{{.Names}}' | grep -q '^green$'; then
     CURRENT_SERVICE="green"
 else
     echo "실행 중인 Blue 또는 Green 컨테이너를 찾을 수 없습니다."
-    exit 1
+    CURRENT_SERVICE=""
 fi
 
 # 2. 새로운 서비스 환경 및 포트 번호 설정
