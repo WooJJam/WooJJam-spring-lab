@@ -47,32 +47,23 @@ fi
 echo "> New Service Start : $NEW_SERVICE (PORT : $IDLE_PORT)"
 sudo docker run --name $NEW_SERVICE -d -p $IDLE_PORT:8080 $DOCKER_USERNAME/$DOCKER_REPOSITORY
 
-TOTAL_HEALTH_CHECK_COUNT=15
-
 # 6. 새로운 버전의 서비스가 성공적으로 배포가 되었는지 Health check
-for i in {1..$TOTAL_HEALTH_CHECK_COUNT}; do
-        HEALTH_STATUS=$(curl -s http://localhost:${IDLE_PORT}/${HEALTH_CHECK_URI} | grep -o '"status":"UP"' | head -n 1)
-        if [ "$HEALTH_STATUS" == '"status":"UP"' ]; then
-                echo "Health check success: $NEW_SERVICE"
-                break
-        else
-                echo "Health check failed, Retry ($i / 15)..."
-                sleep 5
-        fi
+for i in {1..30}; do
+    HEALTH_STATUS=$(curl -s http://127.0.0.1:${IDLE_PORT}/actuator/health | grep -o '"status":"UP"' | head -n 1)
+    if [ "$HEALTH_STATUS" == '"status":"UP"' ]; then
+        echo "Health check successful for $NEW_SERVICE on port $IDLE_PORT"
+        break
+    fi
+    echo "Waiting for server at ${IDLE_PORT} to be UP... Retry ($i/30)"
+    sleep 1
 done
 
-# 7. Nginx가 새로운 포트로 포워딩 되도록 변경
-echo "> Nginx setting update"
-sudo tee $NGINX_CONFIG_PATH > /dev/null <<EOL
-upstream backend {
-        server localhost:$IDLE_PORT;
-}
-EOL
+if [ "$HEALTH_STATUS" != '"status":"UP"' ]; then
+    echo "Health check failed. Aborting deployment."
+    exit 1
+fi
 
-echo "> nginx reloading"
-sudo nginx -s reload
-
-# 8. 이전 버전 삭제
+# 7. 이전 버전 삭제
 if [ ! -z "$CURRENT_SERVICE" ] && docker ps -a --format '{{.Names}}' | grep -q "^${CURRENT_SERVICE}$"; then
     if docker ps --format '{{.Names}}' | grep -q "^${CURRENT_SERVICE}$"; then
         echo "기존 서비스 ${CURRENT_SERVICE}가 실행 중입니다. 중지 및 삭제합니다..."
