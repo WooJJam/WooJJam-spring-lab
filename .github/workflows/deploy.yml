@@ -11,7 +11,7 @@ on:
         description: 'Test scenario tags'
   push:
     branches:
-      - "issue/*"
+      - "infra/issue-*"
 
 jobs:
   build:
