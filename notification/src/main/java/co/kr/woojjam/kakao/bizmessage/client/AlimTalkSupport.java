@@ -31,25 +31,27 @@ public class AlimTalkSupport {
 	public Object sendMessage(User user) {
 
 		Map<String, String> templateParameter = Map.of(
-			"이름", user.getName(),
-			"매치이름", "말달리자 test1",
+			"이름", "우쨈",
+			"매치이름", "갤럭시 구장",
 			"매치시간/날짜", "12-19 01:00",
-			"매치구장", "말달리자 test1",
+			"매치구장", "수성동 갤럭시 1 구장",
 			"id", "2"
 		);
 
-		AlimTalkSendReq.Recipients recipients = AlimTalkSendReq.Recipients.builder()
+		AlimTalkSendReq.Recipients recipient1 = AlimTalkSendReq.Recipients.builder()
 			.recipientNo(user.getPhoneNumber())
 			.templateParameter(templateParameter)
 			.build();
 
 		AlimTalkSendReq request = AlimTalkSendReq.builder()
 			.senderKey(sendKey)
-			.recipientList(List.of(recipients))
+			.recipientList(List.of(recipient1))
 			.templateCode("sponjy001")
 			.build();
+
 		return alimTalkClient.send(appKey, request);
 	}
+	
 	public Object readTemplate() {
 		System.out.println("appKey = " + appKey);
 		System.out.println("sendKey = " + sendKey);

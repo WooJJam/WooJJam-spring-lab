@@ -1,0 +1,80 @@
+name: deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+      tags:
+        description: 'Test scenario tags'
+  push:
+    branches:
+      - "infra/issue-*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
+
+    - name: Make application-dev.yml for Infrastructure API
+      run: |
+          cd infrastructure/src/main/resources
+          touch ./application-dev.yml
+          echo "${{ secrets.DEV }}" > ./application-dev.yml
+      shell: bash
+
+      # 도커 설정
+    - name: Set Docker
+      uses: docker/setup-buildx-action@v2.9.1
+
+    # 도커 로그인
+    - name: Login Docker
+      uses: docker/login-action@v2.2.0
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_PASSWORD }}
+    
+    - name: Build and Deploy Infrastructure Server
+      run: |
+          chmod +x ./gradlew
+          ./gradlew clean :infrastructure:build
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/woojjam-infrastructure-server:latest infrastructure
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/woojjam-infrastructure-server:latest
+
+    # deploy.sh를 Ec2로 복사
+    - name: Copy Deploy Script to EC2
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.EC2_INSTANCE_HOST }}
+        username: ubuntu
+        key: ${{ secrets.EC2_INSTANCE_PRIVATE_KEY }}
+        source: infrastructure/scripts/blue-green-deploy.sh
+        target: ~/spring-labs/infrastructure/
+        strip_components: 2
+
+    # EC2에서 deplou.sh 실행
+    - name: Run deploy.sh on EC2
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.EC2_INSTANCE_HOST }}
+        username: ubuntu
+        key: ${{ secrets.EC2_INSTANCE_PRIVATE_KEY }}
+        script: |
+          export DOCKER_USERNAME=${{ secrets.DOCKERHUB_USERNAME }}
+          export DOCKER_REPOSITORY=${{ secrets.INFRASTRUCTURE_DOCKER_REPOSITORY }}
+          chmod +x /home/ubuntu/spring-labs/infrastructure/blue-green-deploy.sh
+          /home/ubuntu/spring-labs/infrastructure/blue-green-deploy.sh
