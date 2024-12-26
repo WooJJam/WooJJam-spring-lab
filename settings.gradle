@@ -3,3 +3,6 @@ rootProject.name = 'spring-labs'
 include("labs-domain")
 include("notification")
 include("infrastructure")
+
+include("monitoring:sentry")
+findProject(':monitoring:sentry')?.name = 'sentry'
