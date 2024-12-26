@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: notification
+  profiles:
+    group:
+      local: domain
+  jpa:
+    hibernate:
+      ddl-auto: update
+logging:
+  level:
+    co.kr.woojjam.monitoring: debug
+    org.hibernate.SQL: debug
+    org.hibernate.orm.jdbc.bind: trace
+
+sentry:
+  dsn: ${SENTRY_DSN}
+  exception-resolver-order: ${SENTRY_EXCEPTION_RESOLVER_ORDER}
+  max-request-body-size: small

@@ -2,6 +2,6 @@ bootJar { enabled = true }
 jar { enabled = false }
 
 dependencies {
-    implementation(":labs-domain")
+    implementation project(":labs-domain")
     implementation 'io.sentry:sentry-spring-boot-starter-jakarta:7.19.0'
 }
