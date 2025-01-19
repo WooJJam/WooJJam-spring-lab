@@ -1,3 +1,0 @@
-DATABASE_URL: jdbc:mysql://woojjam-mysql-database.cp8am20uw2j9.ap-northeast-2.rds.amazonaws.com:3306/spring-labs?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
-DATABASE_USERNAME: admin
-DATABASE_PASSWORD: jaemin5548
