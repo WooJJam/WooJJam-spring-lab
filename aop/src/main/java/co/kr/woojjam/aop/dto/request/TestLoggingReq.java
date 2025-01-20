@@ -3,7 +3,7 @@ package co.kr.woojjam.aop.dto.request;
 import lombok.Getter;
 import lombok.ToString;
 
-@ToString
+@ToString(of = {"name", "phone"})
 @Getter
 public class TestLoggingReq {
 

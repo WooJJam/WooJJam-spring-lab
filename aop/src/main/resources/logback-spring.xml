@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
+    <springProfile name="local,dev,prod">
+        <property resource="application.yml"/>
+    </springProfile>
+
     <!-- 로그 패턴 색상 적용 -->
     <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
 
@@ -26,9 +30,28 @@
 
     <!-- local 프로파일에 대한 로그 설정 -->
     <springProfile name="local">
+
         <root level="info">
             <appender-ref ref="CONSOLE"/>
         </root>
+
+        <!-- 하이버네이트 SQL 쿼리 -->
+        <logger name="org.hibernate.SQL" level="DEBUG" additivity="false">
+            <appender-ref ref="CONSOLE"/>
+        </logger>
+
+        <logger name="org.hibernate.type.descriptor.sql" level="TRACE" additivity="false">
+            <appender-ref ref="CONSOLE" />
+        </logger>
+
+        <!--        <logger name="org.hibernate.annotations.processing.SQL" level="DEBUG" additivity="false">-->
+        <!--            <appender-ref ref="CONSOLE"/>-->
+        <!--        </logger>-->
+
+        <!--        <logger name="org.hibernate.type.descriptor.sql" level="TRACE" additivity="true">-->
+        <!--            <appender-ref ref="CONSOLE"/>-->
+        <!--        </logger>-->
+
 
         <!-- kr.co.woojjam 로그 설정 -->
         <logger name="kr.co.woojjam" level="debug" additivity="false">
@@ -45,19 +68,18 @@
             <appender-ref ref="CONSOLE"/>
         </logger>
 
-        <!-- 하이버네이트 SQL 쿼리 -->
-        <logger name="org.hibernate.SQL" level="debug" additivity="false">
-            <appender-ref ref="CONSOLE"/>
-        </logger>
+<!--        <logger name="org.hibernate.engine.jdbc" level="TRACE" additivity="true">-->
+<!--            <appender-ref ref="CONSOLE"/>-->
+<!--        </logger>-->
 
-        <!-- 트랜잭션 관련 -->
+         트랜잭션 관련
         <logger name="org.springframework.transaction" level="debug" additivity="false">
             <appender-ref ref="CONSOLE"/>
         </logger>
 
-        <logger name="org.springframework.orm.jpa.JpaTransactionManager" level="debug" additivity="false">
-            <appender-ref ref="CONSOLE"/>
-        </logger>
+<!--        <logger name="org.springframework.orm.jpa.JpaTransactionManager" level="debug" additivity="false">-->
+<!--            <appender-ref ref="CONSOLE"/>-->
+<!--        </logger>-->
     </springProfile>
 
 </configuration>
