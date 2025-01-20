@@ -1,5 +1,7 @@
 package co.kr.woojjam.aop.controller;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +28,8 @@ public class LoggingController {
 	@GetMapping("/logging")
 	public void aopTestLogging(@RequestBody TestLoggingReq request) {
 		log.info("Test Logging");
+		List<User> all = userRepository.findAll();
+		throw new IllegalArgumentException("Error 발생 테스트");
 	}
 
 

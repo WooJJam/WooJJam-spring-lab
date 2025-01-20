@@ -12,11 +12,27 @@
     <property name="CONSOLE_LOG_PATTERN"
               value="[%d{yyyy-MM-dd HH:mm:ss.SSSS}] %clr(${PID:-}){magenta} [%thread] %clr(%5level) %clr(%logger){cyan} %msg%n"/>
 
+    <!-- 파일 로그 패턴 설정 -->
+    <property name="FILE_LOG_PATTERN"
+              value="[%d{yyyy-MM-dd HH:mm:ss.SSSS}] ${PID:-} [%thread] %5level %logger %msg%n"/>
+
     <!-- 콘솔 로그 설정 -->
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
             <Pattern>${CONSOLE_LOG_PATTERN}</Pattern>
         </layout>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>./logs/woojjam-app-server-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>50MB</maxFileSize>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>1GB</totalSizeCap>
+        </rollingPolicy>
     </appender>
 
     <appender name="CONSOLE-INFO" class="ch.qos.logback.core.ConsoleAppender">
@@ -36,25 +52,12 @@
         </root>
 
         <!-- 하이버네이트 SQL 쿼리 -->
-        <logger name="org.hibernate.SQL" level="DEBUG" additivity="false">
+        <logger name="org.hibernate.SQL" level="debug" additivity="false">
             <appender-ref ref="CONSOLE"/>
         </logger>
 
-        <logger name="org.hibernate.type.descriptor.sql" level="TRACE" additivity="false">
-            <appender-ref ref="CONSOLE" />
-        </logger>
-
-        <!--        <logger name="org.hibernate.annotations.processing.SQL" level="DEBUG" additivity="false">-->
-        <!--            <appender-ref ref="CONSOLE"/>-->
-        <!--        </logger>-->
-
-        <!--        <logger name="org.hibernate.type.descriptor.sql" level="TRACE" additivity="true">-->
-        <!--            <appender-ref ref="CONSOLE"/>-->
-        <!--        </logger>-->
-
-
         <!-- kr.co.woojjam 로그 설정 -->
-        <logger name="kr.co.woojjam" level="debug" additivity="false">
+        <logger name="co.kr.woojjam" level="debug" additivity="false">
             <appender-ref ref="CONSOLE"/>
         </logger>
 
@@ -68,18 +71,88 @@
             <appender-ref ref="CONSOLE"/>
         </logger>
 
-<!--        <logger name="org.hibernate.engine.jdbc" level="TRACE" additivity="true">-->
-<!--            <appender-ref ref="CONSOLE"/>-->
-<!--        </logger>-->
+        <!-- jdbc bind 로그 설정 -->
+        <logger name="org.hibernate.orm.jdbc.bind" level="trace" additivity="false">
+            <appender-ref ref="CONSOLE"/>
+        </logger>
 
-         트랜잭션 관련
         <logger name="org.springframework.transaction" level="debug" additivity="false">
             <appender-ref ref="CONSOLE"/>
         </logger>
 
-<!--        <logger name="org.springframework.orm.jpa.JpaTransactionManager" level="debug" additivity="false">-->
-<!--            <appender-ref ref="CONSOLE"/>-->
-<!--        </logger>-->
+    </springProfile>
+
+    <!-- dev 프로파일에 대한 로그 설정 -->
+    <springProfile name="dev">
+
+        <root level="info">
+            <appender-ref ref="FILE"/>
+        </root>
+
+        <!-- 하이버네이트 SQL 쿼리 -->
+        <logger name="org.hibernate.SQL" level="debug" additivity="false">
+            <appender-ref ref="FILE"/>
+        </logger>
+
+        <!-- kr.co.woojjam 로그 설정 -->
+        <logger name="co.kr.woojjam" level="debug" additivity="false">
+            <appender-ref ref="CONSOLE-INFO"/>
+            <appender-ref ref="FILE"/>
+        </logger>
+
+        <!-- Spring Web 로그 설정 -->
+        <logger name="org.springframework.web" level="debug" additivity="false">
+            <appender-ref ref="FILE"/>
+        </logger>
+
+        <!-- Spring Security 로그 설정 -->
+        <logger name="org.springframework.security" level="debug" additivity="false">
+            <appender-ref ref="FILE"/>
+        </logger>
+
+        <!-- jdbc bind 로그 설정 -->
+        <logger name="org.hibernate.orm.jdbc.bind" level="trace" additivity="false">
+            <appender-ref ref="CONSOLE"/>
+        </logger>
+
+        <logger name="org.springframework.transaction" level="debug" additivity="false">
+            <appender-ref ref="FILE"/>
+        </logger>
+
+    </springProfile>
+
+    <!-- dev 프로파일에 대한 로그 설정 -->
+    <springProfile name="prod">
+
+        <root level="info">
+            <appender-ref ref="FILE"/>
+        </root>
+
+        <!-- 하이버네이트 SQL 쿼리 -->
+        <logger name="org.hibernate.SQL" level="debug" additivity="false">
+            <appender-ref ref="FILE"/>
+        </logger>
+
+        <!-- kr.co.woojjam 로그 설정 -->
+        <logger name="co.kr.woojjam" level="info" additivity="false">
+            <appender-ref ref="FILE"/>
+            <appender-ref ref="CONSOLE-INFO"/>
+        </logger>
+
+        <!-- Spring Web 로그 설정 -->
+        <logger name="org.springframework.web" level="info" additivity="false">
+            <appender-ref ref="FILE"/>
+        </logger>
+
+        <!-- Spring Security 로그 설정 -->
+        <logger name="org.springframework.security" level="info" additivity="false">
+            <appender-ref ref="FILE"/>
+        </logger>
+
+        <logger name="org.springframework.transaction" level="info" additivity="false">
+            <appender-ref ref="FILE"/>
+        </logger>
+
     </springProfile>
 
 </configuration>

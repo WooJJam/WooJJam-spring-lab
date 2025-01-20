@@ -2,7 +2,7 @@ spring:
   application:
     name: aop
   profiles:
-    active: local
+    active: dev
     group:
       local: domain
       dev: domain
