@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import co.kr.woojjam.aop.common.GlobalException;
 import co.kr.woojjam.aop.dto.request.TestLoggingReq;
 import co.kr.woojjam.labsdomain.domains.User;
 import co.kr.woojjam.labsdomain.repository.UserRepository;
@@ -48,5 +49,11 @@ public class LoggingController {
 		return ResponseEntity.ok().body(result);
 	}
 
+	@GetMapping("/errors")
+	@Transactional
+	public ResponseEntity<User> error(@RequestBody TestLoggingReq request) {
+
+		throw new GlobalException("이건 에러 테스트");
+	}
 
 }

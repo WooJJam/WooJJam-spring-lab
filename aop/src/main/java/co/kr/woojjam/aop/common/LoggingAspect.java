@@ -35,7 +35,7 @@ public class LoggingAspect {
 		this.objectMapper = objectMapper;
 	}
 
-	@Pointcut("execution(* co.kr.woojjam.aop.controller.LoggingController.*(..))")
+	@Pointcut("execution(* co.kr.woojjam.aop.controller..*Controller.*(..))")
 	public void execute() {
 	}
 
@@ -46,7 +46,7 @@ public class LoggingAspect {
 
 		Object[] args = joinPoint.getArgs();
 
-		log.info("\n============================================================= Request =============================================================");
+		log.info("\n============================================================= Request Start =========================================================");
 		log.info("요청 메서드 : {}", method.getDeclaringClass() + "." + method.getName());
 		log.info("요청 URL : {}", request.getRequestURL());
 		Enumeration<String> headerNames = request.getHeaderNames();
@@ -64,6 +64,7 @@ public class LoggingAspect {
 		for (Object arg : args) {
 			log.info("요청 파라미터 -> (Request : {})", arg);
 		}
+		log.info("\n============================================================= Request End ===========================================================");
 	}
 
 	/**
@@ -78,7 +79,7 @@ public class LoggingAspect {
 	public void afterResponse(JoinPoint joinPoint, Object result) throws JsonProcessingException {
 		Method method = getMethod(joinPoint);
 
-		log.info("\n============================================================= Response =============================================================");
+		log.info("\n============================================================= Response Start ========================================================");
 
 		if (result == null) {
 			return;
@@ -86,14 +87,15 @@ public class LoggingAspect {
 
 		log.info("응답 메서드 이름 : {}", method.getDeclaringClass() + "." + method.getName());
 		log.info("응답 데이터 : {}", objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(result));
+		log.info("\n=========================================================== Response End ===========================================================");
 	}
 
 	@AfterThrowing(pointcut = "execute()", throwing = "exception")
 	public void afterThrowing(JoinPoint joinPoint, Throwable exception) {
-		log.error("================================= Exception ================================");
+		log.error("\n========================================================== Exception Start =========================================================");
 		log.error("예외 메소드: {}", joinPoint.getSignature());
 		log.error("예외 종류 : {}, 에러 메시지 : {}", exception.getClass().getSimpleName(), exception.getMessage());
-		log.error("============================================================================");
+		log.error("\n========================================================== Exception End ===========================================================");
 	}
 
 
