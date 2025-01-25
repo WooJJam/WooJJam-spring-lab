@@ -8,9 +8,11 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Getter
 @Entity
+@ToString(of = {"id", "name"})
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class User extends BaseEntity {
 
@@ -28,4 +30,5 @@ public class User extends BaseEntity {
 		this.nickname = nickname;
 		this.phoneNumber = phoneNumber;
 	}
+
 }
