@@ -9,3 +9,6 @@ include("aop")
 
 include("monitoring:sentry")
 findProject(':monitoring:sentry')?.name = 'sentry'
+
+include("monitoring:actuator")
+findProject(':monitoring:actuator')?.name = 'actuator'
