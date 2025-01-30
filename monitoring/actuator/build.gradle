@@ -1,4 +1,5 @@
 dependencies {
 	implementation project(":labs-domain")
-	implementation "org.springframework.boot:spring-boot-actuator"
+	implementation "org.springframework.boot:spring-boot-starter-actuator"
+	runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
 }

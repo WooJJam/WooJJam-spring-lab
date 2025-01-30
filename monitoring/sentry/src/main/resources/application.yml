@@ -4,6 +4,7 @@ spring:
   profiles:
     group:
       local: domain
+    active: local
   jpa:
     hibernate:
       ddl-auto: update
