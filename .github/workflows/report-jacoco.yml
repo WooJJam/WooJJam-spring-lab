@@ -42,16 +42,18 @@ jobs:
     - name: Run Tests with JaCoCo
       run: ./gradlew clean build
 
-    - name: Upload JaCoCo Report
-      uses: actions/upload-artifact@v3
+    - name: Test Reporter
+      uses: dorny/test-reporter@v1.9.1
       with:
-        name: jacoco-report
-        path: build/reports/index.xml
-
-    - name: Report coverage to PR
-      uses: dorny/test-reporter@v1
-      with:
-        name: Jacoco Test Coverage
-        path: build/reports/index.xml
-        reporter: jacoco
-        fail-on-error: false
+        artifact: ''
+        name: 'Test Reporter Result'
+        path: '**/build/test-results/test/TEST-*'
+        path-replace-backslashes: 'false'
+        reporter: 'java-junit'
+        only-summary: 'false'
+        list-suites: 'all'
+        list-tests: 'all'
+        max-annotations: '10'
+        fail-on-error: 'true'
+        fail-on-empty: 'true'
+        working-directory: ''
