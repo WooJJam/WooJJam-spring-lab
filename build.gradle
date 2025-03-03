@@ -23,12 +23,13 @@ jar { enabled = true }
 allprojects {
     group = 'woojjam'
     version = '0.0.1-SNAPSHOT'
-    sourceCompatibility = '17'
 
     apply plugin: 'java'
     apply plugin: 'java-library'
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'jacoco'
+
 
     configurations {
         compileOnly {
@@ -36,8 +37,37 @@ allprojects {
         }
     }
 
+    jacoco {
+        toolVersion = "0.8.8"
+    }
+
     repositories {
         mavenCentral()
+    }
+
+    jacocoTestReport {
+        reports {
+            html.required = true
+            xml.required = true
+            csv.required = true
+
+            html.destination file("${buildDir}/reports/index.html")
+            xml.destination file("${buildDir}/reports/index.xml")
+            csv.destination file("${buildDir}/reports/index.csv")
+        }
+
+        afterEvaluate {
+            classDirectories.setFrom(
+                    files(classDirectories.files.collect {
+                        fileTree(dir: it, excludes: [
+                                '**/*Application*',
+                                '**/*Exception*',
+                                '**/dto/**',
+                                '**/build/Q.*'
+                        ])
+                    })
+            )
+        }
     }
 
     dependencies {
@@ -56,9 +86,11 @@ allprojects {
         testAnnotationProcessor 'org.projectlombok:lombok'
     }
 
-    tasks.named('test') {
+    test {
         useJUnitPlatform()
+        jacoco {
+            destinationFile = file("$buildDir/jacoco/jacoco.exec")
+        }
+        finalizedBy(jacocoTestReport)
     }
 }
-
-
