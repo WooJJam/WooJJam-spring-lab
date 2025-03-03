@@ -18,7 +18,7 @@ class CafeKioskTest {
 	}
 
 	@Test
-	public void remove() {
+	public void removeTest() {
 		CafeKiosk cafeKiosk = new CafeKiosk();
 		Americano americano = new Americano();
 
@@ -30,7 +30,7 @@ class CafeKioskTest {
 	}
 
 	@Test
-	public void clear() throws Exception{
+	public void clearTest() throws Exception{
 		CafeKiosk cafeKiosk = new CafeKiosk();
 		Americano americano = new Americano();
 		Latte latte = new Latte();
