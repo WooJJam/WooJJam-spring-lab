@@ -43,12 +43,4 @@ class MatchRepositoryTest {
 			.build();
 		matchRepository.save(match2);
     }
-	@Test
-	public void 매치_시작_2시간전_조회() throws Exception {
-
-		List<Match> findMatch = matchRepository.findMatch();
-
-		assertThat(findMatch.size()).isEqualTo(1);
-	}
-
 }

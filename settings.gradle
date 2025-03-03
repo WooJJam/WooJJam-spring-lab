@@ -5,6 +5,7 @@ include("notification")
 include("infrastructure")
 include("schedule:spring-scheduler")
 include("schedule:spring-quartz")
+findProject(':schedule:spring-quartz')?.name = 'spring-quartz'
 include("aop")
 
 include("monitoring:sentry")
