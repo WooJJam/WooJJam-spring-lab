@@ -21,8 +21,6 @@ jobs:
   report:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-      name: Set up JDK 17
 
     - uses: actions/setup-java@v4
       with:
@@ -37,12 +35,11 @@ jobs:
       shell: bash
 
       # 테스트커버리Report를 PR에 Comment에 등록합니다. (Instruction 기준)
-
     - name: Jacoco Report to PR
       id: jacoco
       uses: madrapps/jacoco-report@v1.7.1
       with:
-        paths: ${{ github.workspace }}/build/reports/jacoco/test/index.xml
+        paths: ${{ github.workspace }}/build/reports/index.xml
         token: ${{ secrets.GITHUB_TOKEN }}
         min-coverage-overall: 75
         min-coverage-changed-files: 75
