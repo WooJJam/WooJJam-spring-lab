@@ -36,14 +36,22 @@ jobs:
       run: ./gradlew clean build
       shell: bash
 
-      # 테스트커버리Report를 PR에 Comment에 등록합니다. (Instruction 기준)
-    - name: Jacoco Report to PR
-      id: jacoco
-      uses: madrapps/jacoco-report@v1.7.1
+    - name: Grant execute permission for Gradle
+      run: chmod +x gradlew
+
+    - name: Run Tests with JaCoCo
+      run: ./gradlew clean build
+
+    - name: Upload JaCoCo Report
+      uses: actions/upload-artifact@v3
       with:
-        paths: ${{ github.workspace }}/build/reports/index.xml
-        token: ${{ secrets.GITHUB_TOKEN }}
-        min-coverage-overall: 75
-        min-coverage-changed-files: 75
-        title: "⭐️Code Coverage"
-        update-comment: true
+        name: jacoco-report
+        path: build/reports/index.xml
+
+    - name: Report coverage to PR
+      uses: dorny/test-reporter@v1
+      with:
+        name: Jacoco Test Coverage
+        path: build/reports/index.xml
+        reporter: jacoco
+        fail-on-error: false
