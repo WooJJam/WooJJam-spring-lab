@@ -14,9 +14,7 @@ class CafeKioskTest {
 	void add() {
 		CafeKiosk cafeKiosk = new CafeKiosk();
 		cafeKiosk.add(new Americano());
-
 		System.out.println(">>> 담긴 음료 수 : " + cafeKiosk.getBeverages().size());
-		System.out.println("cafeKiosk.getBeverages().get(0).getName() = " + cafeKiosk.getBeverages().get(0).getName());
 	}
 
 	@Test
