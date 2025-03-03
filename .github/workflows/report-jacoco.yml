@@ -47,7 +47,7 @@ jobs:
       with:
         artifact: ''
         name: 'Test Reporter Result'
-        path: '**/build/test-results/test/TEST-*'
+        path: '**/build/reports/index.xml'
         path-replace-backslashes: 'false'
         reporter: 'java-junit'
         only-summary: 'false'
