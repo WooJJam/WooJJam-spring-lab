@@ -42,4 +42,32 @@ class CafeKioskTest {
 		cafeKiosk.clear();
 		assertThat(cafeKiosk.getBeverages()).isEmpty();
 	}
+
+	@Test
+	public void clearTest2() throws Exception{
+		CafeKiosk cafeKiosk = new CafeKiosk();
+		Americano americano = new Americano();
+		Latte latte = new Latte();
+
+		cafeKiosk.add(americano);
+		cafeKiosk.add(latte);
+		assertThat(cafeKiosk.getBeverages()).hasSize(2);
+
+		cafeKiosk.clear();
+		assertThat(cafeKiosk.getBeverages()).isEmpty();
+	}
+
+	@Test
+	public void clearTest3() throws Exception{
+		CafeKiosk cafeKiosk = new CafeKiosk();
+		Americano americano = new Americano();
+		Latte latte = new Latte();
+
+		cafeKiosk.add(americano);
+		cafeKiosk.add(latte);
+		assertThat(cafeKiosk.getBeverages()).hasSize(2);
+
+		cafeKiosk.clear();
+		assertThat(cafeKiosk.getBeverages()).isEmpty();
+	}
 }
