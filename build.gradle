@@ -8,7 +8,7 @@ plugins {
 
 sonar {
     properties {
-        property "sonar.projectKey", "WooJJam_WooJJam-spring-lab_295c4cc7-41cf-4326-a9a1-3415d100feb0"
+        property "sonar.projectKey", "WooJJam_WooJJam-spring-lab_d7ee7d24-6c79-4eff-8790-e1f85826a992"
         property "sonar.projectName", "WooJJam-spring-lab"
     }
 }
