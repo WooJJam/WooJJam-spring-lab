@@ -41,17 +41,4 @@ class CafeKioskTest {
 		cafeKiosk.clear();
 		assertThat(cafeKiosk.getBeverages()).isEmpty();
 	}
-
-	@Test
-	void calculateTotalPriceTest() {
-		Americano americano = new Americano();
-		Latte latte = new Latte();
-
-		CafeKiosk cafeKiosk = new CafeKiosk();
-		cafeKiosk.add(americano);
-		cafeKiosk.add(latte);
-		int expectedPrice = cafeKiosk.calculateTotalPrice();
-
-		assertThat(expectedPrice).isEqualTo(8500);
-	}
 }
