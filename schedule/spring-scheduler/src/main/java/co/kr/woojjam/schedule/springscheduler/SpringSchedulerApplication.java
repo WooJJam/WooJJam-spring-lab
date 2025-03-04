@@ -1,4 +1,4 @@
-package com.woojjam.schedule.springscheduler;
+package co.kr.woojjam.schedule.springscheduler;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

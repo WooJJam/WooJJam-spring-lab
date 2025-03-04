@@ -1,4 +1,4 @@
-package com.woojjam.schedule.springscheduler;
+package co.kr.woojjam.schedule.springscheduler;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
