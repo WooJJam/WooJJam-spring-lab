@@ -13,6 +13,12 @@ sonar {
     }
 }
 
+sonarqube {
+    properties {
+        property "sonar.coverage.jacoco.xmlReportPaths", "jacoco-test-reports/build/reports/jacoco/*/testCodeCoverageReport.xml"
+    }
+}
+
 import java.util.stream.Collectors
 
 def excludeFromCoverage = new ArrayList<String>()

@@ -1,7 +1,3 @@
-plugins {
-    id 'jacoco-report-aggregation'
-}
-
 dependencies {
     implementation project(':practical-testing')
 }
