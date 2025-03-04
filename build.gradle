@@ -15,7 +15,7 @@ sonar {
 
 sonarqube {
     properties {
-        property "sonar.coverage.jacoco.xmlReportPaths", "jacoco-test-reports/build/reports/jacoco/*/testCodeCoverageReport.xml"
+        property "sonar.coverage.jacoco.xmlReportPaths", "**/build/reports/index.xml"
     }
 }
 
