@@ -6,6 +6,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import co.kr.woojjam.testing.unit.beverage.Americano;
+import co.kr.woojjam.testing.unit.beverage.Beverage;
 import co.kr.woojjam.testing.unit.beverage.Latte;
 
 class CafeKioskTest {
@@ -30,7 +31,7 @@ class CafeKioskTest {
 	}
 
 	@Test
-	public void clearTest() throws Exception{
+	public void clearTest() throws Exception {
 		CafeKiosk cafeKiosk = new CafeKiosk();
 		Americano americano = new Americano();
 		Latte latte = new Latte();
@@ -44,7 +45,20 @@ class CafeKioskTest {
 	}
 
 	@Test
-	public void clearTest2() throws Exception{
+	public void calculateTotalPriceTest() {
+		Americano americano = new Americano();
+		Latte latte = new Latte();
+
+		CafeKiosk cafeKiosk = new CafeKiosk();
+		cafeKiosk.add(americano);
+		cafeKiosk.add(latte);
+		int expectedPrice = cafeKiosk.calculateTotalPrice();
+
+		assertThat(expectedPrice).isEqualTo(8500);
+	}
+
+	@Test
+	public void clearTest2() throws Exception {
 		CafeKiosk cafeKiosk = new CafeKiosk();
 		Americano americano = new Americano();
 		Latte latte = new Latte();
@@ -58,7 +72,7 @@ class CafeKioskTest {
 	}
 
 	@Test
-	public void clearTest3() throws Exception{
+	public void clearTest3() throws Exception {
 		CafeKiosk cafeKiosk = new CafeKiosk();
 		Americano americano = new Americano();
 		Latte latte = new Latte();
