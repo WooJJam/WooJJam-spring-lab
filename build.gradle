@@ -131,7 +131,6 @@ allprojects {
     }
 }
 
-
 def allProjects = getAllprojects().stream()
         .filter(p -> !p.getDisplayName().contains('root project'))
         .collect(Collectors.toList())
