@@ -2,11 +2,9 @@ package co.kr.woojjam.testing.unit;
 
 import static org.assertj.core.api.Assertions.*;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import co.kr.woojjam.testing.unit.beverage.Americano;
-import co.kr.woojjam.testing.unit.beverage.Beverage;
 import co.kr.woojjam.testing.unit.beverage.Latte;
 
 class CafeKioskTest {
