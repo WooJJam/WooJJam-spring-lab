@@ -12,3 +12,4 @@ include("monitoring:sentry")
 findProject(':monitoring:sentry')?.name = 'sentry'
 
 include("practical-testing")
+include("jacoco-test-reports")
