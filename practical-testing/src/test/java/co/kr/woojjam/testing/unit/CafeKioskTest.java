@@ -2,7 +2,6 @@ package co.kr.woojjam.testing.unit;
 
 import static org.assertj.core.api.Assertions.*;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import co.kr.woojjam.testing.unit.beverage.Americano;
@@ -14,13 +13,11 @@ class CafeKioskTest {
 	void add() {
 		CafeKiosk cafeKiosk = new CafeKiosk();
 		cafeKiosk.add(new Americano());
-
 		System.out.println(">>> 담긴 음료 수 : " + cafeKiosk.getBeverages().size());
-		System.out.println("cafeKiosk.getBeverages().get(0).getName() = " + cafeKiosk.getBeverages().get(0).getName());
 	}
 
 	@Test
-	public void remove() {
+	void removeTest() {
 		CafeKiosk cafeKiosk = new CafeKiosk();
 		Americano americano = new Americano();
 
@@ -32,7 +29,7 @@ class CafeKioskTest {
 	}
 
 	@Test
-	public void clear() throws Exception{
+	void clearTest() throws Exception {
 		CafeKiosk cafeKiosk = new CafeKiosk();
 		Americano americano = new Americano();
 		Latte latte = new Latte();
@@ -43,5 +40,18 @@ class CafeKioskTest {
 
 		cafeKiosk.clear();
 		assertThat(cafeKiosk.getBeverages()).isEmpty();
+	}
+
+	@Test
+	void calculateTotalPriceTest() {
+		Americano americano = new Americano();
+		Latte latte = new Latte();
+
+		CafeKiosk cafeKiosk = new CafeKiosk();
+		cafeKiosk.add(americano);
+		cafeKiosk.add(latte);
+		int expectedPrice = cafeKiosk.calculateTotalPrice();
+
+		assertThat(expectedPrice).isEqualTo(8500);
 	}
 }
