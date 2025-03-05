@@ -77,8 +77,6 @@ var allProjects = getAllprojects().stream()
 
 project(':jacoco-test-reports') {
     apply plugin: 'jacoco-report-aggregation'
-    apply plugin: 'java-library'
-
 
     testCodeCoverageReport {
         getClassDirectories().setFrom(files(
