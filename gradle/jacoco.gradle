@@ -1,0 +1,103 @@
+import java.util.stream.Collectors
+
+var excludeFromCoverage = new ArrayList<String>()
+file('coverage-exclude.asap').withInputStream() { it ->
+    excludeFromCoverage.addAll(new BufferedReader(new InputStreamReader(it))
+            .lines()
+            .parallel()
+            .map(s -> s.substring(7).strip())
+            .collect(Collectors.toList()))
+}
+
+allprojects {
+    apply plugin: 'java-library'
+    apply plugin: 'jacoco'
+
+    repositories {
+        mavenCentral()
+    }
+
+    jacoco {
+        toolVersion = "0.8.8"
+    }
+
+    jacocoTestReport {
+        reports {
+            html.required = true
+            xml.required = true
+            csv.required = true
+
+            html.destination file("${buildDir}/reports/index.html")
+            xml.destination file("${buildDir}/reports/index.xml")
+            csv.destination file("${buildDir}/reports/index.csv")
+        }
+
+        afterEvaluate {
+            classDirectories.setFrom(
+                    files(classDirectories.files.collect {
+                        fileTree(dir: it, excludes: excludeFromCoverage.stream()
+                                .map(s -> s + ".class")
+                                .collect(Collectors.toList()))
+                    })
+            )
+        }
+
+        finalizedBy 'jacocoTestCoverageVerification'
+
+        test {
+            useJUnitPlatform()
+            jacoco {
+                destinationFile = file("$buildDir/jacoco/jacoco.exec")
+            }
+            finalizedBy(jacocoTestReport)
+        }
+    }
+
+    jacocoTestCoverageVerification {
+        violationRules {
+            rule {
+                enabled = true
+                element = "CLASS"
+                limit {
+                    counter = "LINE"
+                    value = "COVEREDRATIO"
+                    minimum = 0.0
+                }
+                excludes += excludeFromCoverage.stream()
+                        .map(s -> s.replace("/", "."))
+                        .collect(Collectors.toList())
+            }
+        }
+    }
+}
+
+var allProjects = getAllprojects().stream()
+        .filter(p -> !p.getDisplayName().contains('root project'))
+        .collect(Collectors.toList())
+
+project(':jacoco-test-reports') {
+    apply plugin: 'jacoco-report-aggregation'
+    apply plugin: 'java-library'
+
+
+    testCodeCoverageReport {
+        getClassDirectories().setFrom(files(
+                allProjects
+                        .collect {
+                            it.fileTree(dir: "${it.buildDir}/classes/java/main", exclude:
+                                    excludeFromCoverage.stream()
+                                            .map(s -> s + ".class")
+                                            .collect(Collectors.toList()))
+                        })
+        )
+    }
+
+    var allProjectsExcludeJacoco = allProjects.stream()
+            .filter(p -> !p.getDisplayName().contains('jacoco')
+                    && !p.getDisplayName().contains('root project'))
+            .collect(Collectors.toList())
+
+    dependencies {
+        implementation allProjectsExcludeJacoco
+    }
+}
