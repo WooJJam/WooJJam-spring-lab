@@ -41,4 +41,20 @@ class CafeKioskTest {
 		cafeKiosk.clear();
 		assertThat(cafeKiosk.getBeverages()).isEmpty();
 	}
+
+	@Test
+	public void 계산_테스트() throws Exception{
+
+		CafeKiosk cafeKiosk = new CafeKiosk();
+		Americano americano = new Americano();
+		Latte latte = new Latte();
+
+		cafeKiosk.add(americano);
+		cafeKiosk.add(latte);
+
+		int price = cafeKiosk.calculateTotalPrice();
+
+		assertThat(price).isEqualTo(8500);
+
+	}
 }
