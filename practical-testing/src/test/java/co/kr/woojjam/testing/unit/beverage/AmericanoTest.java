@@ -46,4 +46,11 @@ class AmericanoTest {
 		assertThat(cafeKiosk.getBeverages()).isEmpty();
 	}
 
+	@Test
+	void getPrice() throws Exception{
+		Americano americano = new Americano();
+		assertThat(americano.getPrice()).isEqualTo(4000);
+		assertThat(americano.getName()).isEqualTo("아메리카노");
+	}
+
 }
