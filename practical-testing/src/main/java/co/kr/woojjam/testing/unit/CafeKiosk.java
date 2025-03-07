@@ -36,6 +36,10 @@ public class CafeKiosk {
 		return totalPrice;
 	}
 
+	public boolean testMethod() {
+		return true;
+	}
+
 	public Order createOrder() {
 		return new Order(LocalDateTime.now(), beverages);
 	}

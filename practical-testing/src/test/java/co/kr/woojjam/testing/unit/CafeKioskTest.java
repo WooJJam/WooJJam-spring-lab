@@ -1,6 +1,7 @@
 package co.kr.woojjam.testing.unit;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.Test;
 
@@ -56,5 +57,12 @@ class CafeKioskTest {
 
 		assertThat(price).isEqualTo(8500);
 
+	}
+
+	@Test
+	public void 삭제할_테스트() throws Exception{
+	    CafeKiosk cafeKiosk = new CafeKiosk();
+		boolean status = cafeKiosk.testMethod();
+		assertThat(status).isEqualTo(true);
 	}
 }
