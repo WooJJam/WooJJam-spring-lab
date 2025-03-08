@@ -13,6 +13,7 @@ sonar {
 }
 
 apply from: 'gradle/jacoco.gradle'
+apply from:  'gradle/test.gradle'
 
 //import java.util.stream.Collectors
 //
@@ -94,16 +95,9 @@ allprojects {
         implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
         implementation 'org.springframework.boot:spring-boot-starter-web'
         runtimeOnly 'com.mysql:mysql-connector-j'
-        testImplementation 'org.springframework.boot:spring-boot-starter-test'
-        testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
         compileOnly 'org.projectlombok:lombok'
         annotationProcessor 'org.projectlombok:lombok'
-        testImplementation 'org.springframework.boot:spring-boot-starter-test'
-        testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-
-        testCompileOnly 'org.projectlombok:lombok'
-        testAnnotationProcessor 'org.projectlombok:lombok'
     }
 
 //    jacocoTestCoverageVerification {

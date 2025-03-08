@@ -1,0 +1,15 @@
+allprojects {
+
+    dependencies {
+        testImplementation "org.testcontainers:testcontainers:${testContainersVersion}"
+        testImplementation "org.testcontainers:mysql:${testContainersMysqlVersion}"
+        testImplementation "org.testcontainers:junit-jupiter:${testContainerJunitVersion}"
+        testImplementation "com.redis:testcontainers-redis:${testContainerRedisVersion}"
+
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+        testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+        testCompileOnly 'org.projectlombok:lombok'
+        testAnnotationProcessor 'org.projectlombok:lombok'
+    }
+}
