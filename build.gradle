@@ -13,7 +13,7 @@ sonar {
 }
 
 apply from: 'gradle/jacoco.gradle'
-apply from:  'gradle/test.gradle'
+apply from: 'gradle/test.gradle'
 
 //import java.util.stream.Collectors
 //
