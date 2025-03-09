@@ -4,7 +4,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class TestCouponService {
@@ -16,6 +18,7 @@ public class TestCouponService {
 		TestCoupon coupon = testCouponRepository.findById(couponId)
 			.orElseThrow(() -> new IllegalArgumentException("쿠폰이 존재하지 않습니다."));
 		coupon.useCoupon();
+		log.info("coupon = {}", coupon);
 	}
 
 	public TestCoupon read(Long id) {
