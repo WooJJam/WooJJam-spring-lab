@@ -25,6 +25,7 @@ public class TestCouponService {
 	 * @description
 	 * User가 Coupon을 사용할 경우 수량을 감소시키고,
 	 * History에 이력을 저장합니다.
+	 * 아래 코드는 데드락이 발생할 가능성이 높습니다.
 	 * @author woojjam
 	 * @date 2025-03-12
 	 **/

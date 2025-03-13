@@ -2,84 +2,104 @@ package co.kr.woojjam.concurrency.coupon;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Profile;
 import org.springframework.orm.ObjectOptimisticLockingFailureException;
-import org.springframework.util.StopWatch;
 
 import co.kr.woojjam.concurrency.config.TestDataBaseConfig;
-import jakarta.persistence.OptimisticLockException;
+import co.kr.woojjam.concurrency.entity.TestCoupon;
+import co.kr.woojjam.concurrency.entity.TestUser;
+import co.kr.woojjam.concurrency.repository.TestCouponRepository;
+import co.kr.woojjam.concurrency.repository.TestUserRepository;
+import co.kr.woojjam.concurrency.service.TestCouponService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@SpringBootTest(properties = {"spring.jpa.hibernate.ddl-auto=create"})
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class TestCouponLockTest extends TestDataBaseConfig {
+@Profile("local")
+@SpringBootTest
+public class TestCouponLockTest {
 
 	@Autowired
 	private TestCouponService testCouponService;
 	@Autowired
 	private TestCouponRepository testCouponRepository;
 
+	@Autowired
+	private TestUserRepository testUserRepository;
+
 	private TestCoupon testCoupon;
+	private TestUser testUser;
 
 	@BeforeEach
 	void init() {
 		testCoupon = TestCoupon.builder()
 			.code("A")
-			.discountAmount(1000)
-			.stock(2)
+			.stock(0)
 			.build();
 
+		TestUser user = TestUser.builder()
+			.name("WooJJam")
+			.build();
+
+		testUserRepository.save(user);
 		testCouponRepository.save(testCoupon);
 	}
 
 	@Test
-	public void 낙관적락_유리한_케이스_테스트() throws InterruptedException {
-		int users = 5;
-		ExecutorService executorService = Executors.newFixedThreadPool(5);
-		CountDownLatch countDownLatch = new CountDownLatch(5);
-		AtomicInteger success = new AtomicInteger(0);
-		AtomicInteger failed = new AtomicInteger(0);
+	@DisplayName("어떠한 동시성 제어도 적용하지 않은 기본 메소드")
+	public void executeCoupon() throws InterruptedException {
 
-		long startTime = System.currentTimeMillis();
+		final int people = 2;
+		final Long couponId = 1L;
+		final Long userId = 1L;
+		final CountDownLatch countDownLatch = new CountDownLatch(people);
 
-		for (int i = 0; i < users; i++) {
-			executorService.submit(() -> {
-				while(true) {
-					try {
-						testCouponService.useCoupon(1L);
-						success.incrementAndGet();
-						break;
-					} catch (ObjectOptimisticLockingFailureException e) {
-						log.warn("동시성 충돌 발생");
-					} catch (IllegalStateException e) {
-						log.info("{}",e.getMessage());
-						failed.incrementAndGet();
-						break;
-					}
-				}
-				countDownLatch.countDown();
-			});
+		List<Thread> workers = Stream
+			.generate(() -> new Thread(new LockWorker(couponId, userId, countDownLatch)))
+			.limit(people)
+			.toList();
+
+		workers.forEach(Thread::start);
+		countDownLatch.await();
+
+		List<TestCoupon> results = testCouponRepository.findAll();
+
+		results.forEach(result -> {
+			System.out.println("results = " + results);
+		});
+
+	}
+
+	private class LockWorker implements Runnable {
+
+		private Long couponId;
+		private Long userId;
+		private CountDownLatch countDownLatch;
+
+		public LockWorker(final Long couponId, final Long userId, final CountDownLatch countDownLatch) {
+			this.couponId = couponId;
+			this.userId = userId;
+			this.countDownLatch = countDownLatch;
 		}
 
-		countDownLatch.await(); // 모든 스레드가 끝날 때까지 대기
-		long endTime = System.currentTimeMillis();
-
-		System.out.println("낙관적 락 테스트 실행 시간: " + (endTime - startTime) + "ms");
-
-		TestCoupon coupon = testCouponService.read(1L);
-		assertThat(coupon.getStock()).isEqualTo(0);
-		assertThat(success.get()).isEqualTo(2);
-		assertThat(failed.get()).isEqualTo(3);
+		@Override
+		public void run() {
+			testCouponService.useCoupon(couponId, userId);
+			countDownLatch.countDown();
+		}
 	}
 
 }
