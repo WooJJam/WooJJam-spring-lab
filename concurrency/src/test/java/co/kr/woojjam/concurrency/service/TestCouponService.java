@@ -1,0 +1,56 @@
+package co.kr.woojjam.concurrency.service;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import co.kr.woojjam.concurrency.entity.TestCoupon;
+import co.kr.woojjam.concurrency.entity.TestHistory;
+import co.kr.woojjam.concurrency.entity.TestUser;
+import co.kr.woojjam.concurrency.repository.TestCouponRepository;
+import co.kr.woojjam.concurrency.repository.TestHistoryRepository;
+import co.kr.woojjam.concurrency.repository.TestUserRepository;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Service
+@RequiredArgsConstructor
+public class TestCouponService {
+
+	private final TestCouponRepository testCouponRepository;
+	private final TestUserRepository testUserRepository;
+	private final TestHistoryRepository testHistoryRepository;
+
+	/**
+	 * @description
+	 * User가 Coupon을 사용할 경우 수량을 감소시키고,
+	 * History에 이력을 저장합니다.
+	 * @author woojjam
+	 * @date 2025-03-12
+	 **/
+	@Transactional
+	public void useCoupon(final Long couponId, final Long userId) {
+		TestCoupon coupon = testCouponRepository.findById(couponId)
+			.orElseThrow(() -> new IllegalArgumentException("쿠폰이 존재하지 않습니다."));
+
+		TestUser user = testUserRepository.findById(userId)
+			.orElseThrow(() -> new IllegalArgumentException("유저가 존재하지 않습니다."));
+
+		coupon.useCoupon();
+
+		if (coupon.getStock() > 5) {
+			throw new IllegalStateException("쿠폰 발급량을 초과하였습니다.");
+		}
+
+		TestHistory history = TestHistory.builder()
+			.testCoupon(coupon)
+			.testUser(user)
+			.build();
+
+		testHistoryRepository.save(history);
+	}
+
+	public TestCoupon read(Long id) {
+		return testCouponRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 쿠폰을 찾을 수 없습니다"));
+	}
+}
