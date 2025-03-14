@@ -37,11 +37,7 @@ public class TestCouponService {
 		TestUser user = testUserRepository.findById(userId)
 			.orElseThrow(() -> new IllegalArgumentException("유저가 존재하지 않습니다."));
 
-		coupon.useCoupon();
-
-		if (coupon.getStock() > 5) {
-			throw new IllegalStateException("쿠폰 발급량을 초과하였습니다.");
-		}
+		coupon.use();
 
 		TestHistory history = TestHistory.builder()
 			.testCoupon(coupon)

@@ -1,9 +1,14 @@
 package co.kr.woojjam.concurrency.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Version;
 import lombok.Builder;
 import lombok.Getter;
@@ -36,10 +41,10 @@ public class TestCoupon {
 		// this.version = version;
 	}
 
-	public void useCoupon() {
-		if (this.stock > 5) {
+	public void use() {
+		if (this.stock <= 0) {
 			throw new IllegalStateException("쿠폰 재고가 부족합니다.");
 		}
-		this.stock += 1;
+		this.stock -= 1;
 	}
 }

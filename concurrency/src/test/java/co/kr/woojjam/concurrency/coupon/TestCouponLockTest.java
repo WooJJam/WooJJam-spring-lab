@@ -21,8 +21,10 @@ import org.springframework.orm.ObjectOptimisticLockingFailureException;
 
 import co.kr.woojjam.concurrency.config.TestDataBaseConfig;
 import co.kr.woojjam.concurrency.entity.TestCoupon;
+import co.kr.woojjam.concurrency.entity.TestHistory;
 import co.kr.woojjam.concurrency.entity.TestUser;
 import co.kr.woojjam.concurrency.repository.TestCouponRepository;
+import co.kr.woojjam.concurrency.repository.TestHistoryRepository;
 import co.kr.woojjam.concurrency.repository.TestUserRepository;
 import co.kr.woojjam.concurrency.service.TestCouponService;
 import lombok.extern.slf4j.Slf4j;
@@ -36,6 +38,8 @@ public class TestCouponLockTest {
 	private TestCouponService testCouponService;
 	@Autowired
 	private TestCouponRepository testCouponRepository;
+	@Autowired
+	private TestHistoryRepository testHistoryRepository;
 
 	@Autowired
 	private TestUserRepository testUserRepository;
@@ -47,7 +51,7 @@ public class TestCouponLockTest {
 	void init() {
 		testCoupon = TestCoupon.builder()
 			.code("A")
-			.stock(0)
+			.stock(20)
 			.build();
 
 		TestUser user = TestUser.builder()
@@ -59,10 +63,10 @@ public class TestCouponLockTest {
 	}
 
 	@Test
-	@DisplayName("어떠한 동시성 제어도 적용하지 않은 기본 메소드")
-	public void executeCoupon() throws InterruptedException {
+	@DisplayName("100명의 유저가 A 쿠폰 20장을 동시에 사용할려고 경쟁하는 상황")
+	void executeCoupon() throws InterruptedException {
 
-		final int people = 2;
+		final int people = 100;
 		final Long couponId = 1L;
 		final Long userId = 1L;
 		final CountDownLatch countDownLatch = new CountDownLatch(people);
@@ -75,11 +79,9 @@ public class TestCouponLockTest {
 		workers.forEach(Thread::start);
 		countDownLatch.await();
 
-		List<TestCoupon> results = testCouponRepository.findAll();
+		List<TestHistory> results = testHistoryRepository.findAll();
 
-		results.forEach(result -> {
-			System.out.println("results = " + results);
-		});
+		assertThat(results.size()).isEqualTo(20);
 
 	}
 
@@ -97,8 +99,13 @@ public class TestCouponLockTest {
 
 		@Override
 		public void run() {
-			testCouponService.useCoupon(couponId, userId);
-			countDownLatch.countDown();
+			try {
+				testCouponService.useCoupon(couponId, userId);
+			} catch (Exception e) {
+				log.info("재고 부족");
+			} finally {
+				countDownLatch.countDown();
+			}
 		}
 	}
 
