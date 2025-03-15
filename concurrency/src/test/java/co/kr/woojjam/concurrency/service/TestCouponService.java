@@ -1,6 +1,7 @@
 package co.kr.woojjam.concurrency.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import co.kr.woojjam.concurrency.entity.TestCoupon;
@@ -31,6 +32,24 @@ public class TestCouponService {
 	 **/
 	@Transactional
 	public void useCoupon(final Long couponId, final Long userId) {
+		TestCoupon coupon = testCouponRepository.findById(couponId)
+			.orElseThrow(() -> new IllegalArgumentException("쿠폰이 존재하지 않습니다."));
+
+		TestUser user = testUserRepository.findById(userId)
+			.orElseThrow(() -> new IllegalArgumentException("유저가 존재하지 않습니다."));
+
+		coupon.use();
+
+		TestHistory history = TestHistory.builder()
+			.testCoupon(coupon)
+			.testUser(user)
+			.build();
+
+		testHistoryRepository.save(history);
+	}
+
+	@Transactional(isolation = Isolation.SERIALIZABLE)
+	public void useCouponWithIsolationLevel(final Long couponId, final Long userId) {
 		TestCoupon coupon = testCouponRepository.findById(couponId)
 			.orElseThrow(() -> new IllegalArgumentException("쿠폰이 존재하지 않습니다."));
 
