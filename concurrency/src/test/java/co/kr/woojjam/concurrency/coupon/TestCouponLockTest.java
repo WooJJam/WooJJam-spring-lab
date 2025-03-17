@@ -17,15 +17,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Profile;
-import org.springframework.orm.ObjectOptimisticLockingFailureException;
 
-import co.kr.woojjam.concurrency.config.TestDataBaseConfig;
 import co.kr.woojjam.concurrency.entity.TestCoupon;
 import co.kr.woojjam.concurrency.entity.TestHistory;
 import co.kr.woojjam.concurrency.entity.TestUser;
 import co.kr.woojjam.concurrency.repository.TestCouponRepository;
 import co.kr.woojjam.concurrency.repository.TestHistoryRepository;
 import co.kr.woojjam.concurrency.repository.TestUserRepository;
+import co.kr.woojjam.concurrency.service.SynchronizedFacade;
 import co.kr.woojjam.concurrency.service.TestCouponService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -36,6 +35,8 @@ public class TestCouponLockTest {
 
 	@Autowired
 	private TestCouponService testCouponService;
+	@Autowired
+	private SynchronizedFacade synchronizedFacade;
 	@Autowired
 	private TestCouponRepository testCouponRepository;
 	@Autowired
@@ -86,8 +87,31 @@ public class TestCouponLockTest {
 	}
 
 	@Test
-	@DisplayName("격리 수준으로 동시성 제어하기")
+	@DisplayName("격리 수준(Serializable)으로 동시성 제어하기")
 	void executeCouponWithIsolationLevel() throws InterruptedException {
+
+		final int people = 100;
+		final Long couponId = 1L;
+		final Long userId = 1L;
+		final CountDownLatch countDownLatch = new CountDownLatch(people);
+
+		List<Thread> workers = Stream
+			.generate(() -> new Thread(new LockWorker(couponId, userId, countDownLatch)))
+			.limit(people)
+			.toList();
+
+		workers.forEach(Thread::start);
+		countDownLatch.await();
+
+		List<TestHistory> results = testHistoryRepository.findAll();
+
+		assertThat(results.size()).isEqualTo(20);
+
+	}
+
+	@Test
+	@DisplayName("Synchronized로 동시성 제어하기")
+	void executeCouponWithSynchronized() throws InterruptedException {
 
 		final int people = 100;
 		final Long couponId = 1L;
@@ -123,9 +147,12 @@ public class TestCouponLockTest {
 		@Override
 		public void run() {
 			try {
-				testCouponService.useCouponWithIsolationLevel(couponId, userId);
+				// testCouponService.useCoupon(couponId, userId);
+				// testCouponService.useCouponWithIsolationLevel(couponId, userId);
+				synchronizedFacade.useCouponWithSynchronized(couponId, userId);
 			} catch (Exception e) {
-				log.info("재고 부족");
+				log.info("예외 발생");
+				Thread.currentThread().interrupt();
 			} finally {
 				countDownLatch.countDown();
 			}
