@@ -11,7 +11,6 @@ import co.kr.woojjam.concurrency.repository.TestCouponRepository;
 import co.kr.woojjam.concurrency.repository.TestHistoryRepository;
 import co.kr.woojjam.concurrency.repository.TestUserRepository;
 import lombok.RequiredArgsConstructor;
-import lombok.Synchronized;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -32,7 +31,7 @@ public class TestCouponService {
 	 * @date 2025-03-12
 	 **/
 	@Transactional
-	public void useCoupon(final Long couponId, final Long userId) {
+	public TestHistory useCoupon(final Long couponId, final Long userId) {
 		TestCoupon coupon = testCouponRepository.findById(couponId)
 			.orElseThrow(() -> new IllegalArgumentException("쿠폰이 존재하지 않습니다."));
 
@@ -46,7 +45,7 @@ public class TestCouponService {
 			.testUser(user)
 			.build();
 
-		testHistoryRepository.save(history);
+		return testHistoryRepository.save(history);
 	}
 
 	@Transactional(isolation = Isolation.SERIALIZABLE)
@@ -69,5 +68,19 @@ public class TestCouponService {
 
 	public TestCoupon read(Long id) {
 		return testCouponRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 쿠폰을 찾을 수 없습니다"));
+	}
+
+	public void init() {
+		TestCoupon testCoupon = TestCoupon.builder()
+			.code("A")
+			.stock(20)
+			.build();
+
+		TestUser user = TestUser.builder()
+			.name("WooJJam")
+			.build();
+
+		testUserRepository.save(user);
+		testCouponRepository.save(testCoupon);
 	}
 }
