@@ -67,6 +67,24 @@ public class TestCouponService {
 		testHistoryRepository.save(history);
 	}
 
+	@Transactional
+	public void useCouponWithPessimisticLock(final Long couponId, final Long userId) {
+		TestCoupon coupon = testCouponRepository.findByIdWithPessimisticWrite(couponId)
+			.orElseThrow(() -> new IllegalArgumentException("쿠폰이 존재하지 않습니다."));
+
+		TestUser user = testUserRepository.findById(userId)
+			.orElseThrow(() -> new IllegalArgumentException("유저가 존재하지 않습니다."));
+
+		coupon.use();
+
+		TestHistory history = TestHistory.builder()
+			.testCoupon(coupon)
+			.testUser(user)
+			.build();
+
+		testHistoryRepository.save(history);
+	}
+
 	public TestCoupon read(Long id) {
 		return testCouponRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 쿠폰을 찾을 수 없습니다"));
 	}

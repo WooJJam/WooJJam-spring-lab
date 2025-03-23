@@ -149,9 +149,10 @@ public class TestCouponLockTest {
 			try {
 				// testCouponService.useCoupon(couponId, userId);
 				// testCouponService.useCouponWithIsolationLevel(couponId, userId);
-				synchronizedFacade.useCouponWithSynchronized(couponId, userId);
+				// synchronizedFacade.useCouponWithSynchronized(couponId, userId);
+				testCouponService.useCouponWithPessimisticLock(couponId, userId);
 			} catch (Exception e) {
-				log.info("예외 발생");
+				log.info("error = {}", e.getMessage());
 				Thread.currentThread().interrupt();
 			} finally {
 				countDownLatch.countDown();
