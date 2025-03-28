@@ -29,4 +29,11 @@ public class TestController {
 		TestHistory history = synchronizedFacade.useCouponWithSynchronized(1L, 1L);
 		return ResponseEntity.ok().body(history);
 	}
+
+	@PostMapping("/use-multi-server")
+	public ResponseEntity<?> useCouponWithMultiServer() {
+		log.info("쿠폰을 사용합니다.");
+		TestHistory history = synchronizedFacade.useCouponWithPessimisticLock(1L, 1L);
+		return ResponseEntity.ok().body(history);
+	}
 }
