@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import co.kr.woojjam.concurrency.entity.TestHistory;
 import co.kr.woojjam.concurrency.service.SynchronizedFacade;
+import co.kr.woojjam.concurrency.service.TestCouponService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -17,6 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 public class TestController {
 
 	private final SynchronizedFacade synchronizedFacade;
+	private final TestCouponService testCouponService;
 
 	@PostMapping("/init")
 	public void init() {
@@ -33,7 +35,7 @@ public class TestController {
 	@PostMapping("/use-multi-server")
 	public ResponseEntity<?> useCouponWithMultiServer() {
 		log.info("쿠폰을 사용합니다.");
-		TestHistory history = synchronizedFacade.useCouponWithPessimisticLock(1L, 1L);
+		TestHistory history = testCouponService.useCouponWithPessimisticLock(1L, 1L);
 		return ResponseEntity.ok().body(history);
 	}
 }

@@ -147,13 +147,14 @@ public class TestCouponLockTest {
 		@Override
 		public void run() {
 			try {
-				// testCouponService.useCoupon(couponId, userId);
+			// 	testCouponService.useCoupon(couponId, userId);
 				// testCouponService.useCouponWithIsolationLevel(couponId, userId);
 				// synchronizedFacade.useCouponWithSynchronized(couponId, userId);
 				testCouponService.useCouponWithPessimisticLock(couponId, userId);
-			} catch (Exception e) {
+			}
+			catch (Exception e) {
 				log.info("error = {}", e.getMessage());
-				Thread.currentThread().interrupt();
+			// 	Thread.currentThread().interrupt();
 			} finally {
 				countDownLatch.countDown();
 			}
