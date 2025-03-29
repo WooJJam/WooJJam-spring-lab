@@ -1,7 +1,9 @@
 package co.kr.woojjam.concurrency.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import co.kr.woojjam.concurrency.entity.TestCoupon;
@@ -10,6 +12,10 @@ import co.kr.woojjam.concurrency.entity.TestUser;
 import co.kr.woojjam.concurrency.repository.TestCouponRepository;
 import co.kr.woojjam.concurrency.repository.TestHistoryRepository;
 import co.kr.woojjam.concurrency.repository.TestUserRepository;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.LockModeType;
 import lombok.RequiredArgsConstructor;
 import lombok.Synchronized;
 import lombok.extern.slf4j.Slf4j;
@@ -22,6 +28,8 @@ public class TestCouponService {
 	private final TestCouponRepository testCouponRepository;
 	private final TestUserRepository testUserRepository;
 	private final TestHistoryRepository testHistoryRepository;
+	@Autowired
+	private EntityManagerFactory emf;
 
 	/**
 	 * @description
@@ -83,6 +91,27 @@ public class TestCouponService {
 			.build();
 
 		testHistoryRepository.save(history);
+	}
+
+	@Transactional
+	public void useCouponOptimisticLock(final Long couponId, final Long userId) {
+
+		TestCoupon coupon = testCouponRepository.findById(1L).orElseThrow(() -> new IllegalArgumentException("유저가 존재하지 않습니다."));
+
+		log.info("coupon = {}, version = {}", coupon.getStock(), coupon.getVersion());
+
+		coupon.use();
+
+		TestUser user = testUserRepository.findById(userId)
+			.orElseThrow(() -> new IllegalArgumentException("유저가 존재하지 않습니다."));
+
+		TestHistory history = TestHistory.builder()
+			.testCoupon(coupon)
+			.testUser(user)
+			.build();
+
+		testHistoryRepository.save(history);
+
 	}
 
 	public TestCoupon read(Long id) {

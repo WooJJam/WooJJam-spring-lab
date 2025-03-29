@@ -24,8 +24,8 @@ public class TestHistory {
 	@ManyToOne(fetch = FetchType.LAZY)
 	private TestUser testUser;
 
-	// @ManyToOne(fetch = FetchType.LAZY)
-	// private TestCoupon testCoupon;
+	@ManyToOne(fetch = FetchType.LAZY)
+	private TestCoupon testCoupon;
 
 	@Builder
 	public TestHistory(final Long id, final TestUser testUser, final TestCoupon testCoupon) {

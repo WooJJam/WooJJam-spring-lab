@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Profile;
+import org.springframework.orm.ObjectOptimisticLockingFailureException;
 
 import co.kr.woojjam.concurrency.entity.TestCoupon;
 import co.kr.woojjam.concurrency.entity.TestHistory;
@@ -26,6 +27,7 @@ import co.kr.woojjam.concurrency.repository.TestHistoryRepository;
 import co.kr.woojjam.concurrency.repository.TestUserRepository;
 import co.kr.woojjam.concurrency.service.SynchronizedFacade;
 import co.kr.woojjam.concurrency.service.TestCouponService;
+import jakarta.persistence.OptimisticLockException;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -132,6 +134,49 @@ public class TestCouponLockTest {
 
 	}
 
+	@Test
+	@DisplayName("낙관적의 Optimistic 옵션이 조회 시점에 오류를 반환하는지 테스트")
+	void throwsExceptionWhenSelectingWithOptimisticLock() throws InterruptedException {
+
+		final int people = 2;
+		final Long couponId = 1L;
+		final Long userId = 1L;
+		final CountDownLatch countDownLatch = new CountDownLatch(people);
+
+		List<Thread> workers = Stream
+			.generate(() -> new Thread(new LockWorker(couponId, userId, countDownLatch)))
+			.limit(people)
+			.toList();
+
+		workers.forEach(Thread::start);
+		countDownLatch.await();
+
+		List<TestHistory> results = testHistoryRepository.findAll();
+
+		assertThat(results.size()).isEqualTo(20);
+
+	}
+
+	@Test
+	@DisplayName("낙관적으로 동시성 제어하기")
+	void executeCouponWithOptimisticLock() throws InterruptedException {
+		final int people = 100;
+		final Long couponId = 1L;
+		final Long userId = 1L;
+		final CountDownLatch countDownLatch = new CountDownLatch(people);
+
+		List<Thread> workers = Stream
+			.generate(() -> new Thread(new LockWorker(couponId, userId, countDownLatch)))
+			.limit(people)
+			.toList();
+
+		workers.forEach(Thread::start);
+		countDownLatch.await();
+
+		List<TestHistory> results = testHistoryRepository.findAll();
+		assertThat(results.size()).isEqualTo(20);
+	}
+
 	private class LockWorker implements Runnable {
 
 		private Long couponId;
@@ -146,18 +191,41 @@ public class TestCouponLockTest {
 
 		@Override
 		public void run() {
-			try {
+			// try {
 			// 	testCouponService.useCoupon(couponId, userId);
-				// testCouponService.useCouponWithIsolationLevel(couponId, userId);
-				// synchronizedFacade.useCouponWithSynchronized(couponId, userId);
-				testCouponService.useCouponWithPessimisticLock(couponId, userId);
+			// testCouponService.useCouponWithIsolationLevel(couponId, userId);
+			// synchronizedFacade.useCouponWithSynchronized(couponId, userId);
+			// testCouponService.useCouponWithPessimisticLock(couponId, userId);
+
+			while (true) {
+				try {
+					testCouponService.useCouponOptimisticLock(couponId, userId);
+					break;
+				} catch (ObjectOptimisticLockingFailureException e) {
+					try {
+						log.info("10ms 대기");
+						Thread.sleep(10); // 잠시 대기
+					} catch (InterruptedException ie) {
+						Thread.currentThread().interrupt();
+						throw new RuntimeException("Thread interrupted", ie);
+					}
+				} catch (IllegalStateException e) {
+					log.error("쿠폰 소진 → 종료: {}", e.getMessage());
+					break;
+				} catch (Exception e) {
+					log.error("예상하지 못한 예외 발생: {}", e.getClass().getSimpleName());
+					break;
+				}
 			}
-			catch (Exception e) {
-				log.info("error = {}", e.getMessage());
-			// 	Thread.currentThread().interrupt();
-			} finally {
-				countDownLatch.countDown();
-			}
+
+			countDownLatch.countDown();
+
+			// }
+			// catch (Exception e) {
+			// 	log.info("error = {}", e.getMessage());
+			// // 	Thread.currentThread().interrupt();
+			// } finally {
+			// }
 		}
 	}
 

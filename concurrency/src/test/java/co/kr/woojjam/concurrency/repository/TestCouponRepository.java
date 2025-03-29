@@ -14,4 +14,10 @@ public interface TestCouponRepository extends JpaRepository<TestCoupon, Long> {
 	@Lock(LockModeType.PESSIMISTIC_WRITE)
 	@Query("select c from TestCoupon c where c.id = :id")
 	Optional<TestCoupon> findByIdWithPessimisticWrite(Long id);
+
+	@Query("select c from TestCoupon c where c.id = :id")
+	Optional<TestCoupon> findByWithOptimistic(Long id);
+
+
+
 }
