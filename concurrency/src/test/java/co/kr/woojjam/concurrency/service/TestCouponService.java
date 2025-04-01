@@ -134,6 +134,39 @@ public class TestCouponService {
 		testHistoryRepository.save(history);
 	}
 
+	@Transactional
+	public void txA() {
+		TestCoupon coupon = testCouponRepository.findByIdWithPessimisticWrite(1L).orElseThrow();
+
+		TestUser user = testUserRepository.findByIdWithPessimisticWrite(1L).orElseThrow();
+
+		coupon.use();
+
+		TestHistory history = TestHistory.builder()
+			.code(coupon.getCode())
+			.testUser(user)
+			.build();
+
+		testHistoryRepository.save(history);
+	}
+
+	@Transactional
+	public void txB() {
+		TestUser user = testUserRepository.findByIdWithPessimisticWrite(1L).orElseThrow();
+
+		TestCoupon coupon = testCouponRepository.findByIdWithPessimisticWrite(1L).orElseThrow();
+
+		coupon.use();
+
+		TestHistory history = TestHistory.builder()
+			.code(coupon.getCode())
+			.testUser(user)
+			.build();
+
+		testHistoryRepository.save(history);
+	}
+
+
 
 	public TestCoupon read(Long id) {
 		return testCouponRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 쿠폰을 찾을 수 없습니다"));

@@ -1,20 +1,19 @@
 package co.kr.woojjam.concurrency.coupon;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
 import static org.assertj.core.api.Assertions.*;
 
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Profile;
 import org.springframework.orm.ObjectOptimisticLockingFailureException;
@@ -34,7 +33,7 @@ import lombok.extern.slf4j.Slf4j;
 @Profile("local")
 @SpringBootTest
 public class TestCouponLockTest {
-
+	//
 	@Autowired
 	private TestCouponService testCouponService;
 	@Autowired
@@ -189,17 +188,43 @@ public class TestCouponLockTest {
 		threadA.start();
 		threadB.start();
 
-		// 두 스레드가 모두 준비될 때까지 기다림
 		readyLatch.await();
 
-		// 동시에 출발
 		startLatch.countDown();
 
-		// 모두 완료될 때까지 대기
 		doneLatch.await();
 	}
 
+	@Test
+	void testPessimisticLockCausedByDeadLock() throws InterruptedException {
+		ExecutorService executor = Executors.newFixedThreadPool(2);
 
+		executor.submit(() -> {
+			try {
+				testCouponService.txA();
+			} catch (Exception e) {
+				log.error("xA failed: " + e.getMessage());
+				e.getCause().printStackTrace();
+			}
+		});
+
+		executor.submit(() -> {
+			try {
+				testCouponService.txB();
+			} catch (Exception e) {
+				log.error("txB failed: " + e.getMessage());
+				e.getCause().printStackTrace();
+			}
+		});
+
+		executor.shutdown(); // 작업 제출 종료
+
+		// 최대 5초 대기
+		boolean finished = executor.awaitTermination(5, TimeUnit.SECONDS);
+		if (!finished) {
+			log.error("데드락 발생");
+		}
+	}
 
 	private class LockWorker implements Runnable {
 
@@ -215,15 +240,25 @@ public class TestCouponLockTest {
 
 		@Override
 		public void run() {
-			// try {
-			// 	testCouponService.useCoupon(couponId, userId);
-			// testCouponService.useCouponWithIsolationLevel(couponId, userId);
-			// synchronizedFacade.useCouponWithSynchronized(couponId, userId);
-			// testCouponService.useCouponWithPessimisticLock(couponId, userId);
+			try {
+				// testCouponService.useCoupon(couponId, userId);
+				// testCouponService.useCouponWithIsolationLevel(couponId, userId);
+				// synchronizedFacade.useCouponWithSynchronized(couponId, userId);
+				// testCouponService.useCouponWithPessimisticLock(couponId, userId);
+				// runOptimisticLock(countDownLatch);
 
+			} catch (Exception e) {
+				log.info("error = {}", e.getMessage());
+				// 	Thread.currentThread().interrupt();
+			} finally {
+				// }
+			}
+		}
+
+		private void runOptimisticLock(CountDownLatch countDownLatch) {
 			while (true) {
 				try {
-					testCouponService.useCouponOptimisticLock(couponId, userId);
+					testCouponService.useCouponOptimisticLock(1L, 1L);
 					break;
 				} catch (ObjectOptimisticLockingFailureException e) {
 					try {
@@ -243,14 +278,7 @@ public class TestCouponLockTest {
 			}
 
 			countDownLatch.countDown();
-
-			// }
-			// catch (Exception e) {
-			// 	log.info("error = {}", e.getMessage());
-			// // 	Thread.currentThread().interrupt();
-			// } finally {
-			// }
 		}
-	}
 
+	}
 }
