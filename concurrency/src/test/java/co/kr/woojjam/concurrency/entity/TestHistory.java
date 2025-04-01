@@ -27,10 +27,13 @@ public class TestHistory {
 	@ManyToOne(fetch = FetchType.LAZY)
 	private TestCoupon testCoupon;
 
+	private String code;
+
 	@Builder
-	public TestHistory(final Long id, final TestUser testUser, final TestCoupon testCoupon) {
+	public TestHistory(final Long id, final TestUser testUser, final TestCoupon testCoupon, final String code) {
 		this.id = id;
+		this.testCoupon = testCoupon;
 		this.testUser = testUser;
-		// this.testCoupon = testCoupon;
+		this.code = code;
 	}
 }

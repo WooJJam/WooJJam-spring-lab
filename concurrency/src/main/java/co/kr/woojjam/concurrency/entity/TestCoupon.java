@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Version;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,8 +24,8 @@ public class TestCoupon {
 	private String code; // 쿠폰 코드
 	private int stock; // 남은 쿠폰 개수
 
-	// @Version
-	// private Integer version;
+	@Version
+	private Integer version;
 
 	@Builder
 	public TestCoupon(final Long id, final String code, final int stock,
@@ -32,7 +33,7 @@ public class TestCoupon {
 		this.id = id;
 		this.code = code;
 		this.stock = stock;
-		// this.version = version;
+		this.version = version;
 	}
 
 	public void use() {

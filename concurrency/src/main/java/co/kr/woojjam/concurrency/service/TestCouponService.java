@@ -86,6 +86,29 @@ public class TestCouponService {
 		return history;
 	}
 
+	@Transactional
+	public TestHistory useCouponOptimisticLock(final Long couponId, final Long userId) {
+
+		TestCoupon coupon = testCouponRepository.findById(1L).orElseThrow(() -> new IllegalArgumentException("유저가 존재하지 않습니다."));
+
+		log.info("coupon = {}, version = {}", coupon.getStock(), coupon.getVersion());
+
+		coupon.use();
+
+		TestUser user = testUserRepository.findById(userId)
+			.orElseThrow(() -> new IllegalArgumentException("유저가 존재하지 않습니다."));
+
+		TestHistory history = TestHistory.builder()
+			.testCoupon(coupon)
+			.testUser(user)
+			.build();
+
+		testHistoryRepository.save(history);
+
+		return history;
+
+	}
+
 	public TestCoupon read(Long id) {
 		return testCouponRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 쿠폰을 찾을 수 없습니다"));
 	}

@@ -135,29 +135,6 @@ public class TestCouponLockTest {
 	}
 
 	@Test
-	@DisplayName("낙관적의 Optimistic 옵션이 조회 시점에 오류를 반환하는지 테스트")
-	void throwsExceptionWhenSelectingWithOptimisticLock() throws InterruptedException {
-
-		final int people = 2;
-		final Long couponId = 1L;
-		final Long userId = 1L;
-		final CountDownLatch countDownLatch = new CountDownLatch(people);
-
-		List<Thread> workers = Stream
-			.generate(() -> new Thread(new LockWorker(couponId, userId, countDownLatch)))
-			.limit(people)
-			.toList();
-
-		workers.forEach(Thread::start);
-		countDownLatch.await();
-
-		List<TestHistory> results = testHistoryRepository.findAll();
-
-		assertThat(results.size()).isEqualTo(20);
-
-	}
-
-	@Test
 	@DisplayName("낙관적으로 동시성 제어하기")
 	void executeCouponWithOptimisticLock() throws InterruptedException {
 		final int people = 100;
@@ -176,6 +153,53 @@ public class TestCouponLockTest {
 		List<TestHistory> results = testHistoryRepository.findAll();
 		assertThat(results.size()).isEqualTo(20);
 	}
+
+	@Test
+	void testOptimisticLockReadTwiceVersionChange() throws InterruptedException {
+		Long couponId = 1L;
+
+		CountDownLatch readyLatch = new CountDownLatch(2);  // A, B 준비 신호
+		CountDownLatch startLatch = new CountDownLatch(1);  // 동시에 출발
+		CountDownLatch doneLatch = new CountDownLatch(2);   // 완료 대기
+
+		Thread threadA = new Thread(() -> {
+			try {
+				readyLatch.countDown();         // 준비됨
+				startLatch.await();             // 출발 대기
+				testCouponService.useCouponOptimisticLock(couponId, 1L);
+			} catch (InterruptedException e) {
+				Thread.currentThread().interrupt();
+			} finally {
+				doneLatch.countDown();
+			}
+		});
+
+		Thread threadB = new Thread(() -> {
+			try {
+				readyLatch.countDown();         // 준비됨
+				startLatch.await();             // 출발 대기
+				testCouponService.useCouponOptimisticLockWithExplicitLocking(couponId, 1L);
+			} catch (InterruptedException e) {
+				Thread.currentThread().interrupt();
+			} finally {
+				doneLatch.countDown();
+			}
+		});
+
+		threadA.start();
+		threadB.start();
+
+		// 두 스레드가 모두 준비될 때까지 기다림
+		readyLatch.await();
+
+		// 동시에 출발
+		startLatch.countDown();
+
+		// 모두 완료될 때까지 대기
+		doneLatch.await();
+	}
+
+
 
 	private class LockWorker implements Runnable {
 

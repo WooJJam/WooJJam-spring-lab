@@ -1,5 +1,6 @@
 package co.kr.woojjam.concurrency.service;
 
+import org.junit.jupiter.api.DisplayName;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -111,8 +112,28 @@ public class TestCouponService {
 			.build();
 
 		testHistoryRepository.save(history);
-
 	}
+
+	@Transactional
+	public void useCouponOptimisticLockWithExplicitLocking(final Long couponId, final Long userId) throws
+		InterruptedException {
+
+		TestCoupon coupon = testCouponRepository.findByWithOptimistic(1L).orElseThrow(() -> new IllegalArgumentException("유저가 존재하지 않습니다."));
+		coupon.use();
+
+		Thread.sleep(1000);
+		log.info("----------- 1초 대기 -----------");
+		TestUser user = testUserRepository.findById(userId)
+			.orElseThrow(() -> new IllegalArgumentException("유저가 존재하지 않습니다."));
+
+		TestHistory history = TestHistory.builder()
+			.code(coupon.getCode())
+			.testUser(user)
+			.build();
+
+		testHistoryRepository.save(history);
+	}
+
 
 	public TestCoupon read(Long id) {
 		return testCouponRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 쿠폰을 찾을 수 없습니다"));
