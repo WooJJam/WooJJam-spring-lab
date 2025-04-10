@@ -1,5 +1,9 @@
-bootJar { enabled = false }
-jar { enabled = true }
+plugins {
+    id 'java'
+}
+
+bootJar { enabled = true }
+jar { enabled = false }
 
 dependencies {
 

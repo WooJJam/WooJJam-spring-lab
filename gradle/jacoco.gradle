@@ -18,7 +18,7 @@ allprojects {
     }
 
     jacoco {
-        toolVersion = "0.8.8"
+        toolVersion = "${jacocoVersion}"
     }
 
     jacocoTestReport {
@@ -77,6 +77,8 @@ var allProjects = getAllprojects().stream()
 
 project(':jacoco-test-reports') {
     apply plugin: 'jacoco-report-aggregation'
+
+
 
     testCodeCoverageReport {
         getClassDirectories().setFrom(files(
