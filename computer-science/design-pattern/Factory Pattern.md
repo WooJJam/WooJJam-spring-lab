@@ -40,7 +40,8 @@ Class UserC {
 
 간단하게 예시를 하나 들어보자.
 
-![image.png](%E1%84%91%E1%85%A2%E1%86%A8%E1%84%90%E1%85%A9%E1%84%85%E1%85%B5%20%E1%84%91%E1%85%A2%E1%84%90%E1%85%A5%E1%86%AB%201d5053dba52480db8737ef3caacfd1e7/image.png)
+![factory-method.png](https://github.com/user-attachments/assets/5344f95e-133b-42a8-8ea0-596b91ac46ae)
+)
 
 `Car` 라는 상위 인터페이스가 있고, 자동차의 종류에는 `Suv` , `Sedan` , `Truck` 3가지 종류가 있다. 그리고 각 자동차는 현대 자동차와 기아 자동차들만 있으며, `Suv` 에는 `Santafe`, `Sorento` \ `Sedan` 에는 `K5` , `Sonata` \  `Truck` 에는 `Bongo` , `Porter` 가 있다.
 
@@ -50,7 +51,7 @@ Class UserC {
 
 이때 팩토리 메서드 중 일부를 살펴보면
 
-![image.png](%E1%84%91%E1%85%A2%E1%86%A8%E1%84%90%E1%85%A9%E1%84%85%E1%85%B5%20%E1%84%91%E1%85%A2%E1%84%90%E1%85%A5%E1%86%AB%201d5053dba52480db8737ef3caacfd1e7/image%201.png)
+![factory-method-logic.png](https://github.com/user-attachments/assets/620dd109-33ea-48af-b088-dcae88e3567b)
 
 다음과 같이 메서드 내에서 분기문을 통해 객체를 생성해주고 있다. 만약 여기서 쌍용 자동차가 추가된다면 어떻게 될까? 모든 팩토리 클래스에다가 쌍용 자동차에 대한 분기문을 추가해주어야 할 것이다. 그렇다면 OCP 원칙에 위배되는 꼴이다. 이러한 부분이 팩토리 메서드의 문제점이라고 할 수 있다.
 
@@ -62,7 +63,7 @@ Class UserC {
 
 앞선 예제를 추상 팩토리로 표현하면 다음과 같다.
 
-![image.png](%E1%84%91%E1%85%A2%E1%86%A8%E1%84%90%E1%85%A9%E1%84%85%E1%85%B5%20%E1%84%91%E1%85%A2%E1%84%90%E1%85%A5%E1%86%AB%201d5053dba52480db8737ef3caacfd1e7/image%202.png)
+![abstract-factory.png](https://github.com/user-attachments/assets/7305465c-781d-4715-9552-048f70b61ef3)
 
 팩토리 메서드는 **하나의 종류의 자동차(SUV, Sedan 등)**에 대해서만 객체를 생성하지만,
 
@@ -72,7 +73,8 @@ Class UserC {
 
 **어떤 팩토리 객체를 사용하느냐에 따라 같은 메서드를 호출해도 다른 객체가 생성**된다.
 
-![image.png](%E1%84%91%E1%85%A2%E1%86%A8%E1%84%90%E1%85%A9%E1%84%85%E1%85%B5%20%E1%84%91%E1%85%A2%E1%84%90%E1%85%A5%E1%86%AB%201d5053dba52480db8737ef3caacfd1e7/image%203.png)
+![abstract-factory-logic.png](https://github.com/user-attachments/assets/aaf5a927-f2e1-46ad-abeb-05b371dfab84)
+
 
 그렇다고 해서 추상 팩토리가 팩토리 메서드의 상위 개념이거나 무조건 더 나은 패턴이라는 뜻은 아니다.
 
