@@ -18,9 +18,11 @@ public class User {
 	private Long id;
 
 	private String name;
+	private String phone;
 
 	@Builder
-	public User(final String name) {
+	public User(final String name, final String phone) {
 		this.name = name;
+		this.phone = phone;
 	}
 }

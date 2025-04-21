@@ -20,6 +20,7 @@ public class UserService {
 	public void save() {
 		User user = User.builder()
 			.name("우재민")
+			.phone("010-2818-7305")
 			.build();
 
 		userRepository.save(user);
