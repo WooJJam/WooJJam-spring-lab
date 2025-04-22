@@ -1,5 +1,10 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
 public class FloydWarshall {
-	static final int INF = int(10e9);
+	static final int INF = Integer.parseInt(String.valueOf(10e9));
 
 	public static void floyd(int[][] graph, int n) {
 		// 경유지
