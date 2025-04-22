@@ -20,6 +20,9 @@ logging:
   level:
     sql: debug
 
+slack:
+  token: ${SLACK_OAUTH_TOKEN:slack-oauth-token}
+
 ---
 spring:
   config:
