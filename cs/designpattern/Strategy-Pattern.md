@@ -1,10 +1,5 @@
 # 전략 패턴
 
-1. [전략패턴 이란?](전략패턴 이란?)
-2. [전략패턴의 구조](전략패턴의 구조)
-3. [예제](예제)
-4. [Java에서 전략 패턴이 사용되는 예시](Java에서 전략 패턴이 사용되는 예시)
-
 ## 1. 전략패턴 이란?
 객체의 행위를 바꾸고 싶은 경우 '직접' 수정하지 않고, 전략이라고 불리는 **캡슐화한 알고리즘**을 컨텍스트 안에서 바꿔주면서 상호 교체가 가능하게 만드는 패턴으로, 디자인 패턴중 행위 패턴에 속한다.
 
@@ -13,7 +8,7 @@
 > 프로그래밍에서 컨텍스트란 작업이 실행되는 배경으로 해당 작업을 완료하는데 필요한 모든 관련 정보를 캡슐화 한 것이다.
 
 
-## 2. 전략패턴의 구조
+# 2. 전략패턴의 구조
 
 ![strategy-pattern.png](../resources/design-pattern/strategy-pattern/strategy-pattern.png)
 
@@ -54,7 +49,7 @@ GoF의 다지안 패턴의 정의를 빗대어 설명해보자만
 
 쇼핑 카드라는 컨텍스트에 아이템을 담아 삼성 카드 또는 카카오 카드라는 2개의 전략을 사용하여 결제를 진행한다는 내용이다.
 
-![img.png](strategy-pattern-example.png)
+![img.png](../resources/design-pattern/strategy-pattern/strategy-pattern-example.png)
 
 ```java
 public interface PaymentStrategy {
