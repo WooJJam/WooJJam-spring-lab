@@ -31,32 +31,34 @@ public class PaymentCompletedEventListener {
 	private String token;
 
 	@TransactionalEventListener
-	public void sendCompletedMessage(final PaymentCompletedEvent event) {
-		throw new IllegalArgumentException("일부로 오류 발생");
-		// try {
-		// 	MethodsClient methods = Slack.getInstance().methods(token);
-		//
-		// 	final User user = event.user();
-		// 	final Payment payment = event.payment();
-		//
-		// 	ChatPostMessageRequest request = ChatPostMessageRequest.builder()
-		// 		.channel("결제내역")
-		// 		.blocks(
-		// 			asBlocks(
-		// 				header(header -> header.text(plainText("💳 " + user.getName() + " 님이 결제를 완료하였습니다."))),
-		// 				divider(),
-		// 				section(section -> section.text(markdownText(
-		// 					"*전화번호: * " + user.getPhone()
-		// 					+ "\n*결제 상품: * " + payment.getName()
-		// 					+ "\n*결제 금액: * " + new DecimalFormat("#,###").format(payment.getPrice()).replace(",", ".") + "원")
-		// 				))))
-		// 			.build();
-		//
-		// 	methods.chatPostMessage(request);
-		//
-		// 	log.info("request {}", request);
-		// } catch (IOException | SlackApiException e) {
-		// 	log.error("error: {}", e.getMessage(), e);
-		// }
+	@Async
+	public void sendCompletedMessage(final PaymentCompletedEvent event) throws InterruptedException {
+		Thread.sleep(10000);
+		// throw new IllegalArgumentException("일부로 오류 발생");
+		try {
+			MethodsClient methods = Slack.getInstance().methods(token);
+
+			final User user = event.user();
+			final Payment payment = event.payment();
+
+			ChatPostMessageRequest request = ChatPostMessageRequest.builder()
+				.channel("결제내역")
+				.blocks(
+					asBlocks(
+						header(header -> header.text(plainText("💳 " + user.getName() + " 님이 결제를 완료하였습니다."))),
+						divider(),
+						section(section -> section.text(markdownText(
+							"*전화번호: * " + user.getPhone()
+							+ "\n*결제 상품: * " + payment.getName()
+							+ "\n*결제 금액: * " + new DecimalFormat("#,###").format(payment.getPrice()).replace(",", ".") + "원")
+						))))
+					.build();
+
+			methods.chatPostMessage(request);
+
+			log.info("request {}", request);
+		} catch (IOException | SlackApiException e) {
+			log.error("error: {}", e.getMessage(), e);
+		}
 	}
 }

@@ -31,10 +31,11 @@ public class PaymentUseCase {
 	}
 
 	@Transactional
-	public void pay(final Long paymentId, final Long userId) {
+	public void pay(final Long paymentId, final Long userId) throws InterruptedException {
 		Payment payment = paymentService.read(paymentId);
 		User user = userService.read(userId);
 		paymentService.pay(user, payment);
 		eventPublisher.publishCompleteEvent(payment, user);
+		log.info("결제 로직 완료");
 	}
 }

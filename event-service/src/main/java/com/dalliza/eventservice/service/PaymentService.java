@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -51,6 +52,8 @@ public class PaymentService {
 			.build();
 
 		paymentHistoryRepository.save(history);
+
+		log.info("history Id = {}", history.getId());
 	}
 
 	@Transactional
