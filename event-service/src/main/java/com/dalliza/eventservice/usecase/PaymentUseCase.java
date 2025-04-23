@@ -5,6 +5,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.dalliza.eventservice.entity.Payment;
 import com.dalliza.eventservice.entity.User;
+import com.dalliza.eventservice.event.PaymentCompletedEvent;
+import com.dalliza.eventservice.event.PaymentCompletedEventListener;
+import com.dalliza.eventservice.event.PaymentCompletedEventPublisher;
 import com.dalliza.eventservice.service.NotificationService;
 import com.dalliza.eventservice.service.PaymentService;
 import com.dalliza.eventservice.service.UserService;
@@ -19,7 +22,7 @@ public class PaymentUseCase {
 
 	private final UserService userService;
 	private final PaymentService paymentService;
-	private final NotificationService notificationService;
+	private final PaymentCompletedEventPublisher eventPublisher;
 
 	@Transactional
 	public void init() {
@@ -32,6 +35,6 @@ public class PaymentUseCase {
 		Payment payment = paymentService.read(paymentId);
 		User user = userService.read(userId);
 		paymentService.pay(user, payment);
-		notificationService.send(user, payment);
+		eventPublisher.publishCompleteEvent(payment, user);
 	}
 }
