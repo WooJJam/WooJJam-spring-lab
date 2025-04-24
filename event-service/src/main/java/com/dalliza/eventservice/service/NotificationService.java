@@ -29,28 +29,28 @@ public class NotificationService {
 
 	public void send(final User user, final Payment payment) {
 
-		throw new IllegalArgumentException("일부로 예외 발생");
-		// try {
-		// 	MethodsClient methods = Slack.getInstance().methods(token);
-		//
-		// 	ChatPostMessageRequest request = ChatPostMessageRequest.builder()
-		// 		.channel("결제내역")
-		// 		.blocks(
-		// 			asBlocks(
-		// 				header(header -> header.text(plainText("💳 " + user.getName() + " 님이 결제를 완료하였습니다."))),
-		// 				divider(),
-		// 				section(section -> section.text(markdownText(
-		// 					"*전화번호: * " + user.getPhone()
-		// 					+ "\n*결제 상품: * " + payment.getName()
-		// 					+ "\n*결제 금액: * " + new DecimalFormat("#,###").format(payment.getPrice()).replace(",", ".") + "원")
-		// 				))))
-		// 			.build();
-		//
-		// 	methods.chatPostMessage(request);
-		//
-		// 	log.info("request {}", request);
-		// } catch (IOException | SlackApiException e) {
-		// 	log.error("error: {}", e.getMessage(), e);
-		// }
+		try {
+			MethodsClient methods = Slack.getInstance().methods(token);
+
+			ChatPostMessageRequest request = ChatPostMessageRequest.builder()
+				.channel("결제내역")
+				.text("결제 완료 알림입니다.")
+				.blocks(
+					asBlocks(
+						header(header -> header.text(plainText("💳 " + user.getName() + " 님이 결제를 완료하였습니다."))),
+						divider(),
+						section(section -> section.text(markdownText(
+							"*전화번호: * " + user.getPhone()
+							+ "\n*결제 상품: * " + payment.getName()
+							+ "\n*결제 금액: * " + new DecimalFormat("#,###").format(payment.getPrice()).replace(",", ".") + "원")
+						))))
+					.build();
+
+			methods.chatPostMessage(request);
+
+			log.info("알림을 전송하였습니다.");
+		} catch (IOException | SlackApiException e) {
+			log.error("error: {}", e.getMessage(), e);
+		}
 	}
 }

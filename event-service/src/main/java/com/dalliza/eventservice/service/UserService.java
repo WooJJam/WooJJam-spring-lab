@@ -19,8 +19,8 @@ public class UserService {
 	@Transactional
 	public void save() {
 		User user = User.builder()
-			.name("우재민")
-			.phone("010-2818-7305")
+			.name("WooJJam")
+			.phone("010-1234-5678")
 			.build();
 
 		userRepository.save(user);
