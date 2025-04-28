@@ -42,7 +42,7 @@ public class PaymentService {
 	}
 
 	@Transactional
-	public void pay(final User user, final Payment payment) {
+	public void pay(final User user, final Payment payment) throws InterruptedException {
 
 		payment.decreaseAmount();
 
