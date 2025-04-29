@@ -28,5 +28,6 @@ public class PaymentController {
 	@PostMapping("/pay")
 	public void pay(@RequestBody PaymentRequest request) throws InterruptedException {
 		paymentUseCase.pay(request.paymentId(), request.userId());
+		log.info("pay() 메소드 종료");
 	}
 }

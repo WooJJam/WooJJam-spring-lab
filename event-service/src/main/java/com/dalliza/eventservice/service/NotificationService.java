@@ -53,11 +53,17 @@ public class NotificationService {
 						))))
 				.build();
 
-			methods.chatPostMessage(request);
+			// methods.chatPostMessage(request);
+			Thread.sleep(100);
+
 
 			log.info("알림을 전송하였습니다.");
-		} catch (IOException | SlackApiException e) {
-			log.error("error: {}", e.getMessage(), e);
 		}
+		catch (Exception e) {
+			log.error("error : {}", e.getMessage(), e);
+		}
+		// catch (IOException | SlackApiException e) {
+		// 	log.error("error: {}", e.getMessage(), e);
+		// }
 	}
 }

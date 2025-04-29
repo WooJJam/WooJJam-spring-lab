@@ -3,6 +3,7 @@ package com.dalliza.eventservice.event;
 import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.event.TransactionalEventListener;
 
@@ -22,12 +23,14 @@ public class PaymentCompletedEventListener {
 	private final NotificationAppender notificationAppender;
 	private final NotificationService notificationService;
 
+	@Async
 	@TransactionalEventListener
-	public void sendCompletedMessage(final PaymentCompletedEvent event) throws InterruptedException {
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	public void sendCompletedMessage(final PaymentCompletedEvent event) {
 
 		log.info("PaymentCompletedEvent 를 수신하였습니다.");
 
-		notificationAppender.save(event.user());
 		notificationService.send(event.user(), event.payment());
+		notificationAppender.append(event.user());
 	}
 }

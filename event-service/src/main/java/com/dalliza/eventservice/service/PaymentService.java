@@ -48,7 +48,7 @@ public class PaymentService {
 
 		PaymentHistory history = PaymentHistory.builder()
 			.user(user)
-			.payment(payment)
+			.paymentId(payment.getId())
 			.build();
 
 		paymentHistoryRepository.save(history);

@@ -22,12 +22,11 @@ public class PaymentHistory {
 	@ManyToOne(fetch = FetchType.LAZY)
 	private User user;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	private Payment payment;
+	private Long paymentId;
 
 	@Builder
-	public PaymentHistory(final User user, final Payment payment) {
+	public PaymentHistory(final User user, final Long paymentId) {
 		this.user = user;
-		this.payment = payment;
+		this.paymentId = paymentId;
 	}
 }
