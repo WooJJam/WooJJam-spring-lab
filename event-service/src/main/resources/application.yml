@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: app
+  main:
+    allow-bean-definition-overriding: true
+
+  profiles:
+    active: test
+    group:
+      local:
+      test:
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${DATABASE_URL:jdbc:mysql://localhost:3306/woojjam?serverTimezone=Asia/Seoul&characterEncoding=UTF-8}
+    username: ${DATABASE_USERNAME:root}
+    password: ${DATABASE_PASSWORD:1234}
+
+logging:
+  level:
+    sql: debug
+
+slack:
+  token: ${SLACK_OAUTH_TOKEN:slack-oauth-token}
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+  jpa:
+    hibernate:
+      ddl-auto: create
+  sql:
+    init:
+      mode: always
+
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true

@@ -14,3 +14,4 @@ findProject(':monitoring:sentry')?.name = 'sentry'
 include("practical-testing")
 include("jacoco-test-reports")
 include("concurrency")
+include("event-service")
