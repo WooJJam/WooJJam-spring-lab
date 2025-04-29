@@ -13,6 +13,8 @@
 - **concurrency**: Spring에서 다양한 동시성 제어 방법을 연구하는 모듈
   - [고찰 1편 정리글](https://woojjam.tistory.com/10)
 - **cs**: 각종 CS에 대해서 탐구하는 패키지
+- **event-service**: 스프링 이벤트를 탐구하는 모듈
+  - [이벤트를 발행하여, 트랜잭션과 관심사 분리하기](https://woojjam.tistory.com/11) 
 - **infrastructure**: Spring과 인프라 설계를 통합하여 배포 테스트 모듈
 - **jacoco-test-reports**: JaCoCo 로 테스트 커버리지를 측정하기 위한 모듈
 - **labs-domain**: JPA를 사용한 공통 모듈로 모든 모듈에서 사용가능한 영역
