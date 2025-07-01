@@ -5,6 +5,7 @@ import static com.slack.api.model.block.composition.BlockCompositions.*;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -34,6 +35,8 @@ public class NotificationService {
 
 	public void send(final User user, final Payment payment) {
 
+		Random random = new Random();
+
 		try {
 
 			MethodsClient methods = Slack.getInstance().methods(token);
@@ -54,7 +57,8 @@ public class NotificationService {
 				.build();
 
 			// methods.chatPostMessage(request);
-			Thread.sleep(100);
+
+			Thread.sleep(random.nextInt(200, 400));
 
 
 			log.info("알림을 전송하였습니다.");

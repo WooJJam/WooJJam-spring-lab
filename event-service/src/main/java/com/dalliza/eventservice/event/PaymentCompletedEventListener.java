@@ -23,9 +23,7 @@ public class PaymentCompletedEventListener {
 	private final NotificationAppender notificationAppender;
 	private final NotificationService notificationService;
 
-	@Async
 	@TransactionalEventListener
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public void sendCompletedMessage(final PaymentCompletedEvent event) {
 
 		log.info("PaymentCompletedEvent 를 수신하였습니다.");

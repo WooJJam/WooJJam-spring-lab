@@ -38,7 +38,7 @@ public class PaymentUseCase {
 		User user = userService.read(userId);
 		paymentService.pay(user, payment);
 		log.info("결제가 완료 되었습니다. 이벤트를 발행합니다.");
-		applicationEventPublisher.publishEvent(new PaymentCompletedEvent(payment, user));
-		// eventPublisher.publishCompleteEvent(payment, user);
+		// applicationEventPublisher.publishEvent(new PaymentCompletedEvent(payment, user));
+		eventPublisher.publishCompleteEvent(payment, user);
 	}
 }

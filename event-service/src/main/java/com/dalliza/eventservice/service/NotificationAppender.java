@@ -1,6 +1,7 @@
 package com.dalliza.eventservice.service;
 
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.dalliza.eventservice.entity.Notification;
@@ -17,7 +18,7 @@ public class NotificationAppender {
 
 	private final NotificationRepository notificationRepository;
 
-	@Transactional
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public void append(final User user) {
 
 		Notification notification = Notification.builder()
