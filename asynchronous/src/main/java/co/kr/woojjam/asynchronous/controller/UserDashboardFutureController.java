@@ -11,7 +11,7 @@ import co.kr.woojjam.asynchronous.usecase.UserDashboardFutureUseCase;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/api/v1/dashboards")
+@RequestMapping("/api/v1/future/dashboards")
 @RequiredArgsConstructor
 public class UserDashboardFutureController {
 

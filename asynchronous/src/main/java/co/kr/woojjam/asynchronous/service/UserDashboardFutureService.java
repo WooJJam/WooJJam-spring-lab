@@ -14,7 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class UserDashboardFutureService {
 
-	private final ExecutorService executorService = Executors.newFixedThreadPool(5);
+	private final ExecutorService executorService = Executors.newCachedThreadPool();
 
 	public Future<String> readUser() {
 		return executorService.submit(() -> {

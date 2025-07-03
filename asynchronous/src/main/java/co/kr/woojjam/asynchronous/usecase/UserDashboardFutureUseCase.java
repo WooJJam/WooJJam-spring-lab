@@ -7,7 +7,9 @@ import org.springframework.stereotype.Component;
 
 import co.kr.woojjam.asynchronous.service.UserDashboardFutureService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Component
 @RequiredArgsConstructor
 public class UserDashboardFutureUseCase {
@@ -19,8 +21,12 @@ public class UserDashboardFutureUseCase {
 		Future<String> userFuture = userDashboardFutureService.readUser();
 		Future<String> orderFuture = userDashboardFutureService.readOrders();
 
+		log.info("userFuture.get 시작");
 		String user = userFuture.get();
+		log.info("userFuture.get 종료");
+		log.info("orderFuture.get 시작");
 		String orders = orderFuture.get();
+		log.info("orderFuture.get 종료");
 
 		long endTime = System.currentTimeMillis();
 
