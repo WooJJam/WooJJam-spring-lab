@@ -54,6 +54,15 @@ public class CompletableFutureOrderCallbackTest {
 		assertThat("주문 아이템: iPhone 16, 주문 가격: 1,300,000").isEqualTo(orders.get());
 	}
 
+	@Test
+	@DisplayName("thenAccept로 콜백 조합하기")
+	void thenAcceptTest() throws ExecutionException, InterruptedException {
+		CompletableFuture<Void> orderFuture = CompletableFuture.supplyAsync(() -> orderItem(orderNo))
+			.thenAccept(this::printOrderItem);
+
+		orderFuture.get();
+	}
+
 	private String orderItem(final String orderNo) {
 		try {
 			Thread.sleep(2000);
@@ -62,6 +71,17 @@ public class CompletableFutureOrderCallbackTest {
 			System.out.println(e.getCause().getMessage());
 		}
 		return items.get(orderNo);
+	}
+
+	private void printOrderItem(final String orderNo) {
+		try {
+			Thread.sleep(2000);
+			System.out.println("orderItem Thread = " + Thread.currentThread().getName());
+		} catch (InterruptedException e) {
+			System.out.println(e.getCause().getMessage());
+		}
+
+		System.out.println("주문 아이템: iPhone 16, 주문 가격: 1,300,000");
 	}
 
 	private String getPaymentInfo(final String item) {
