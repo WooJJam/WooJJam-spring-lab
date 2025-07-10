@@ -63,6 +63,15 @@ public class CompletableFutureOrderCallbackTest {
 		orderFuture.get();
 	}
 
+	@Test
+	@DisplayName("thenRun 콜백 조합하기")
+	void thenRunTest() throws ExecutionException, InterruptedException {
+		CompletableFuture<Void> orderFuture = CompletableFuture.supplyAsync(() -> orderItem(orderNo))
+			.thenRun(this::printOrderLog);
+
+		orderFuture.get();
+	}
+
 	private String orderItem(final String orderNo) {
 		try {
 			Thread.sleep(2000);
@@ -93,4 +102,9 @@ public class CompletableFutureOrderCallbackTest {
 		}
 		return String.format("주문 아이템: %s, 주문 가격: 1,300,000", item);
 	}
+
+	private void printOrderLog() {
+		System.out.println("새로운 아이템을 구매하였습니다.");
+	}
+
 }
