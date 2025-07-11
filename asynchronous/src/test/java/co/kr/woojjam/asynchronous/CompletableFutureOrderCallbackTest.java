@@ -123,7 +123,7 @@ public class CompletableFutureOrderCallbackTest {
 			.map(CompletableFuture::join)
 			.collect(Collectors.joining(" "));
 
-		System.out.println("result = " + result);
+		assertThat("사용자: WooJJam 주문: 아이폰 16 결제: 완료").isEqualTo(result);
 	}
 
 	private String orderItem(final String orderNo) {
