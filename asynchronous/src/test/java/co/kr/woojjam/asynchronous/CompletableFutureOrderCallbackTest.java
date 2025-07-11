@@ -1,5 +1,6 @@
 package co.kr.woojjam.asynchronous;
 
+import static java.lang.Thread.*;
 import static org.assertj.core.api.Assertions.*;
 
 import java.util.HashMap;
@@ -8,6 +9,8 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -72,9 +75,60 @@ public class CompletableFutureOrderCallbackTest {
 		orderFuture.get();
 	}
 
+	/**
+	 * 사용자 정보, 주문 내역, 결제 상태를 각각 비동기로 조회하고 모두 완료되었을 때 통합 응답 생성
+	 */
+	@Test
+	@DisplayName("allOf 콜백 조합하기")
+	void allOfTest() throws Exception{
+
+		CompletableFuture<String> userFuture = CompletableFuture.supplyAsync(() -> {
+			try {
+				sleep(2000);
+				System.out.println("userFuture");
+			} catch (InterruptedException e) {
+				throw new RuntimeException(e);
+			}
+			return "사용자: WooJJam";
+		});
+
+		CompletableFuture<String> orderFuture = CompletableFuture.supplyAsync(() -> {
+			try {
+				sleep(2000);
+				System.out.println("orderFuture");
+			} catch (InterruptedException e) {
+				throw new RuntimeException(e);
+			}
+			return "주문: 아이폰 16";
+		});
+
+		CompletableFuture<String> paymentFuture = CompletableFuture.supplyAsync(() -> {
+			try {
+				sleep(1000);
+				System.out.println("paymentFuture");
+			} catch (InterruptedException e) {
+				throw new RuntimeException(e);
+			}
+			return "결제: 완료";
+		});
+
+		CompletableFuture<Void> allFuture = CompletableFuture.allOf(userFuture, orderFuture, paymentFuture);
+		allFuture.get();
+
+		assertThat(userFuture.isDone()).isTrue();
+		assertThat(orderFuture.isDone()).isTrue();
+		assertThat(paymentFuture.isDone()).isTrue();
+
+		String result = Stream.of(userFuture, orderFuture, paymentFuture)
+			.map(CompletableFuture::join)
+			.collect(Collectors.joining(" "));
+
+		System.out.println("result = " + result);
+	}
+
 	private String orderItem(final String orderNo) {
 		try {
-			Thread.sleep(2000);
+			sleep(2000);
 			System.out.println("orderItem Thread = " + Thread.currentThread().getName());
 		} catch (InterruptedException e) {
 			System.out.println(e.getCause().getMessage());
@@ -84,7 +138,7 @@ public class CompletableFutureOrderCallbackTest {
 
 	private void printOrderItem(final String orderNo) {
 		try {
-			Thread.sleep(2000);
+			sleep(2000);
 			System.out.println("orderItem Thread = " + Thread.currentThread().getName());
 		} catch (InterruptedException e) {
 			System.out.println(e.getCause().getMessage());
@@ -95,7 +149,7 @@ public class CompletableFutureOrderCallbackTest {
 
 	private String getPaymentInfo(final String item) {
 		try {
-			Thread.sleep(2000);
+			sleep(2000);
 			System.out.println("getPaymentInfo Thread = " + Thread.currentThread().getName());
 		} catch (InterruptedException e) {
 			System.out.println(e.getCause().getMessage());
