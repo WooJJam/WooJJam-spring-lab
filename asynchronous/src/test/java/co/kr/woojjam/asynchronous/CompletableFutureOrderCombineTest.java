@@ -45,6 +45,16 @@ public class CompletableFutureOrderCombineTest {
 		assertThat("주문 아이템: iPhone 16/ [옵션] AppleCare+").isEqualTo(result.get());
 	}
 
+	@Test
+	@DisplayName("thenAcceptBoth 으로 작업 결합하기")
+	void thenAcceptBoth() throws ExecutionException, InterruptedException {
+		CompletableFuture<String> orderFuture = CompletableFuture.supplyAsync(() -> orderItem(orderNo));
+		CompletableFuture<String> deliveryFuture = CompletableFuture.supplyAsync(this::getDeliveryStatus);
+
+		orderFuture.thenAcceptBoth(deliveryFuture, this::updateDeliveryStatus);
+		Thread.sleep(3000);
+	}
+
 	private String orderItem(final String orderNo) {
 		try {
 			Thread.sleep(1000);
@@ -71,6 +81,13 @@ public class CompletableFutureOrderCombineTest {
 
 	private String combineOrderAndProductInfo(String orderNo, String product) {
 		return orderNo + "/ [옵션] " + product;
+	}
+
+	private String getDeliveryStatus() {
+		return "결제 대기";
+	}
+	private void updateDeliveryStatus(final String item, final String status) {
+		System.out.println(item + " -> " + status);
 	}
 
 }
