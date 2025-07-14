@@ -10,6 +10,8 @@
 
 기술별 모듈들은 Multi Module을 기반으로 작성됩니다.
 - **aop**: Spring의 AOP를 학습
+- **asynchronous**: Spring 과 Java의 비동기 세계
+  - [자바와 스프링의 비동기 처리 - 1편: CompletableFuture 톺아보기](https://woojjam.tistory.com/12)
 - **concurrency**: Spring에서 다양한 동시성 제어 방법을 연구하는 모듈
   - [고찰 1편 정리글](https://woojjam.tistory.com/10)
 - **cs**: 각종 CS에 대해서 탐구하는 패키지
