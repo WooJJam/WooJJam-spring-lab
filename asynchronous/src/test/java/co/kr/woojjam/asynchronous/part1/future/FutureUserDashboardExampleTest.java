@@ -1,4 +1,4 @@
-package co.kr.woojjam.asynchronous.future;
+package co.kr.woojjam.asynchronous.part1.future;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;

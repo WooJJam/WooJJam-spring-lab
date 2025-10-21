@@ -1,4 +1,4 @@
-package co.kr.woojjam.asynchronous;
+package co.kr.woojjam.asynchronous.part1;
 
 import static org.assertj.core.api.Assertions.*;
 
